@@ -29,6 +29,9 @@ div.card {
 
 div.wrapper {
   margin: 4rem 0rem;
+  border: 5px solid rgb(9, 3, 85);
+  background-color: rgb(99, 118, 179);
+  height: 400px;
 }
 
 p.recipe_titile {
@@ -39,6 +42,7 @@ p.recipe_titile {
 
 img.style{
   border-radius: 2rem;
+  border: 5px solid rgb(9, 3, 85);
   position: absolute;
   width: 250px;
   height: 200px;

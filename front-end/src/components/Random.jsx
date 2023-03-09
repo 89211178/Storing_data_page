@@ -3,29 +3,29 @@ import "../styles.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
-function Veggie() {
-  const [veggie, setVeggie] = useState([]);
+function Random() {
+  const [random, setRandom] = useState([]);
 
   useEffect(() => {
-    getVeggie();
+    getRandom();
   }, []);
 
   // ${process.env.REACT_APP_API_KEY}
   // make you API hidden
 
-  const getVeggie = async () => {
+  const getRandom = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=8&tags=vegetarian`
+      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=8`
     );
     const data = await api.json();
-    setVeggie(data.recipes);
+    setRandom(data.recipes);
     console.log(data.recipes);
   };
 
   return (
     <div>
           <div className="wrapper">
-            <h3>VEGETARIAN RECIPES</h3>
+            <h3>RANDOM RECPIES</h3>
             <Splide
               options={ {
                 perPage: 4,
@@ -34,7 +34,7 @@ function Veggie() {
                 drag: "free",
                 gap: "1rem"
               } }>
-            {veggie.map((recipe) => {
+            {random.map((recipe) => {
               return (
                 <SplideSlide>
                   <div className="card">
@@ -51,4 +51,4 @@ function Veggie() {
   );
 }
 
-export default Veggie;
+export default Random;
