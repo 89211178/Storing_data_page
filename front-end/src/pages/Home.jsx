@@ -1,21 +1,12 @@
 import Veggie from "../components/Veggie";
 import Random from "../components/Random";
 import Vegan from "../components/Vegan";
+import Navbar from "../components/Navbar"
 
 function Home() {
   return (
     <div>
       <div className="body">
-        <div className="topnav">
-          <a className="active" href="Home_page.html">
-            Home page
-          </a>
-          <a href="Find_recipe.html">Find recipe</a>
-          <a href="View_profile.html">View profile</a>
-          <a href="View_profile.html">View recipes</a>
-          <a href="Add_recipe.html">Add recipe</a>
-        </div>
-
         <div className="relative">
           <div className="about">
               <h2>ABOUT COOKSMART:</h2>
