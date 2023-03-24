@@ -3,7 +3,7 @@ const app = express()
 const dotenv = require("dotenv")
 dotenv.config()
 
-const port = process.env.PORT || 5015
+const port = process.env.PORT || 5895
 //Import opur custom modules-controllers
 const web= require("./routes/web")
 const db= require("./db/conn")
