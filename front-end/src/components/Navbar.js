@@ -2,10 +2,12 @@ export default function Navbar() {
   const path = window.location.pathname
   return (
       <div className="topnav">
-            <a href="/Home">Home page</a>
-            <CustomLink href="/Add_recipe">Add recipe</CustomLink>
-            <CustomLink href="/Find">Find</CustomLink>
-            <CustomLink href="/View_profile">View profile</CustomLink>
+            <p><a href="/Home">Home page</a></p>
+            <p><CustomLink href="/Find_recipe">Find recipe</CustomLink></p>
+            <p><CustomLink href="/View_profile">View profile</CustomLink></p>
+            <p><CustomLink href="/Add_recipe">Add recipe</CustomLink></p>
+            <p><CustomLink href="/Login">Login</CustomLink></p>
+            <p><CustomLink href="/Singup">Singup</CustomLink></p>
       </div>
   )
 }

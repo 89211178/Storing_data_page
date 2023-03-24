@@ -1,5 +1,6 @@
 import "./styles.css";
 import Pages from "./pages/Pages";
+import Page_search from "./pages/Page_search";
 
 function App() {
   return (
@@ -10,3 +11,5 @@ function App() {
 }
 
 export default App;
+
+/*  <Page_search />  */

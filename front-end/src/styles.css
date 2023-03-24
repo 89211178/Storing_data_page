@@ -3,7 +3,16 @@ div.body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
+  height: 800px;
+}
+
+div.body_2 {
+  background-image: url(https://cdn.dribbble.com/users/1162077/screenshots/4667608/food-pattern.gif);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 div.relative {
@@ -12,7 +21,7 @@ div.relative {
   position: relative;
   top: 10px;
   width: 85%;
-  height: 2000px;
+  height: 1700px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -55,10 +64,8 @@ div.about {
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
 }
-/* ---------------------------------------------------------- */
 
-input[type="text"],
-input[type="password"] {
+.input[type="search"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -67,19 +74,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-button {
-  background-color: #04aa6d;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 50%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
+/* ---------------------------------------------------------- */
 
 .save_changes_btn {
   width: auto;
@@ -150,6 +145,16 @@ button:hover {
   font-size: 17px;
 }
 
+.topnav p {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
+  font-size: 17px;
+}
+
 .topnav a:hover {
   background-color: rgb(75, 97, 172);
   color: rgb(255, 255, 255);
@@ -159,3 +164,78 @@ button:hover {
   background-color: rgb(75, 97, 172);
   color: white;
 }
+
+/* ---------------------------------------------------------- */
+
+div.relative_1 {
+  background-color: rgb(42, 67, 150);
+  border: 15px solid rgb(9, 3, 85);
+  position: relative;
+  top: 150px;
+  width: 350px;
+  height: 450px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+  }  
+
+div.relative_2 {
+  background-color: rgb(255, 255, 255);
+  border: 10px solid rgb(9, 3, 85);
+  color: rgb(9, 3, 85);
+  position: relative;
+  width: 300px;
+  height: 80px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+  }  
+
+  .container_2 {
+  padding: 16px;
+  }
+
+  .container_3 {
+    padding: 16px;
+    background-color: #ffffff;
+  }
+
+  span.psw {
+  float: right;
+  padding-top: 16px;
+  }
+
+  .sing_up_btn {
+  width: auto;
+  padding: 10px 20px;
+  background-color: rgb(9, 3, 85);
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
