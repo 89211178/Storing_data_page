@@ -1,6 +1,9 @@
+import Navbar from "../components/Navbar";
+
 function Add_recipe() {
     return (
       <div>
+        <Navbar />
         <div className="body_2">
           <div className="relative">
 

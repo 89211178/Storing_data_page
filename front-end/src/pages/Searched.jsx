@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components"; 
 import "../styles.css";
+import Navbar from "../components/Navbar";
 
 function Searched() {
-
     const [searched_recipes, set_searched_recipes] = useState([]);
     let params = useParams();
 
@@ -23,6 +23,7 @@ function Searched() {
 
     return (
         <div>
+          <Navbar />
           <div className="body">
             <div className="relative">
               <div className="wrapper">
@@ -50,6 +51,6 @@ function Searched() {
         text-align: center;
         padding: 2rem
       }
-    `;
+    `; 
 
   export default Searched;

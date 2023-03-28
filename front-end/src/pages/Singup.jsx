@@ -1,6 +1,38 @@
+import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
+import Navbar from "../components/Navbar";
+
 function Singup() {
+    const [name,setName] = useState("");
+    const [password,setPassword] = useState("");
+    const [mail,setMail] = useState("");
+    const navigate = useNavigate();
+
+    async function singUp() {
+        let item= {name,password,mail}
+        console.warn(item)
+        console.log(item)
+
+        navigate('/Home', { replace: true });
+
+        let result = await fetch("http://88.200.63.148:3002/Singup", {
+            method: 'POST',
+            body: JSON.stringify(item),
+            headers: {
+                "Content-Type": 'application/json',
+                "Accept": 'application/json',
+            }
+        })
+
+        result = await result.json();
+        localStorage.setItem("use-info",JSON.stringify(result)); 
+        console.warn("result", result)
+    }
+
     return (
         <div>
+            <Navbar />
             <div className="body">
                 <div className="relative_1">
 
@@ -8,22 +40,18 @@ function Singup() {
                     <h1>CookSmart</h1>
                     </div>
 
-                    <form action="/action_page.php" method="post">
-
+                    <form>
                     <div className="container_2">
                         <label for="uname"><b>Mail:</b></label>
-                        <input type="text" placeholder="Enter Mail" name="mail" required></input>
+                        <input type="text" value={mail} onChange={(e)=>setMail(e.target.value)} className="from-control" placeholder="Enter Mail" name="mail" required></input>
 
                         <label for="uname"><b>Username:</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required></input>
+                        <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="from-control" placeholder="Enter Username" name="uname" required></input>
 
                         <label for="psw"><b>Password:</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required></input>
+                        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="from-control" placeholder="Enter Password" name="psw" required></input>
 
-                        <label for="psw"><b>Confirm password:</b></label>
-                        <input type="password" placeholder="Repeat Password" name="r_psw" required></input>
-
-                        <button className="sing_up_btn">Sing_up</button>
+                        <button onClick={singUp} className="sing_up_btn">Sing_up</button>
                     </div>
                     </form>
 

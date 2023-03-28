@@ -1,15 +1,17 @@
 import "./styles.css";
 import Pages from "./pages/Pages";
-import Page_search from "./pages/Page_search";
+import Search from "./components/Search";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="APP">
-      <Pages />
+      <BrowserRouter>
+        <Search />
+        <Pages />
+      </BrowserRouter>
     </div>
   );
 }
 
 export default App;
-
-/*  <Page_search />  */

@@ -212,6 +212,12 @@ div.relative_2 {
   background-color: rgb(9, 3, 85);
   }
 
+  .log_in_btn {
+    width: auto;
+    padding: 10px 20px;
+    background-color: rgb(9, 3, 85);
+  }
+
   input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;

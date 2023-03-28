@@ -1,6 +1,9 @@
+import Navbar from "../components/Navbar";
+
 function View_profile() {
     return (
         <div>
+          <Navbar />
           <div className="body_2">
             <div className="relative">
           

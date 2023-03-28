@@ -1,10 +1,12 @@
 import Veggie from "../components/Veggie";
 import Random from "../components/Random";
 import Vegan from "../components/Vegan";
+import Navbar from "../components/Navbar";
 
 function Home() {
   return (
     <div>
+      <Navbar />
       <div className="body_2">
         <div className="relative">
           <div className="about">
