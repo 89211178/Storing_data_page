@@ -40,7 +40,6 @@ function Random() {
                   <div className="card">
                   <p className="recipe_title">{recipe.title}</p>
                   <img className="style" src={recipe.image} alt={recipe.title} />
-                  <p className="recipe_title">{recipe.maxReadyTime}</p>
                 </div>
                 </SplideSlide>
               );

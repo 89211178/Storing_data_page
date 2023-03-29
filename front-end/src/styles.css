@@ -18,10 +18,25 @@ div.body_2 {
 div.relative {
   background-color: rgb(75, 97, 172);
   border: 15px solid rgb(9, 3, 85);
-  position: relative;
   top: 10px;
   width: 85%;
   height: 1700px;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+div.relative3 {
+  background-color: rgb(75, 97, 172);
+  border: 15px solid rgb(9, 3, 85);
+  top: 10px;
+  width: 85%;
+  height: 800px;
+  position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -42,6 +57,15 @@ div.wrapper {
   background-color: rgb(99, 118, 179);
   height: 400px;
 }
+
+div.wrapper2 {
+  margin: 4rem 0rem;
+  border: 5px solid rgb(9, 3, 85);
+  background-color: rgb(99, 118, 179);
+  height: 670px;
+}
+
+/* margin: 4rem 0rem; */
 
 p.recipe_titile {
   color:rgb(9, 3, 85);

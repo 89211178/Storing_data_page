@@ -21,7 +21,7 @@ function Pages() {
         <Route path="/Add_recipe" exact element={<Add_recipe />}/>
         <Route path="/Login" exact element={<Login />}/>
         <Route path="/Singup" exact element={<Singup />}/>
-        <Route path="/Find_recipe/Searched/:Search" exact element={<Searched />}/>
+        <Route path="/searched/:search" exact element={<Searched />}/>
       </Routes>
   );
   }
