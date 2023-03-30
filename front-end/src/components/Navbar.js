@@ -6,8 +6,6 @@ export default function Navbar() {
             <p><CustomLink href="/Find_recipe">Find recipe</CustomLink></p>
             <p><CustomLink href="/View_profile">View profile</CustomLink></p>
             <p><CustomLink href="/Add_recipe">Add recipe</CustomLink></p>
-            <p><CustomLink href="/Login">Login</CustomLink></p>
-            <p><CustomLink href="/Singup">Singup</CustomLink></p>
       </div>
   )
 }

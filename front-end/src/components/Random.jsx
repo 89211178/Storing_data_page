@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import { Link } from "react-router-dom";
 
 function Random() {
   const [random, setRandom] = useState([]);
@@ -15,7 +16,7 @@ function Random() {
 
   const getRandom = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=4`
+      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=1`
     );
     const data = await api.json();
     setRandom(data.recipes);
@@ -36,11 +37,13 @@ function Random() {
               } }>
             {random.map((recipe) => {
               return (
-                <SplideSlide>
+                <SplideSlide key={recipe.id}>
                   <div className="card">
+                  <Link to={"/recipe/" + recipe.id}>
                   <p className="recipe_title">{recipe.title}</p>
                   <img className="style" src={recipe.image} alt={recipe.title} />
-                </div>
+                  </Link>
+                  </div>
                 </SplideSlide>
               );
             })}

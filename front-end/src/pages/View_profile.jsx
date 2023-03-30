@@ -6,13 +6,11 @@ function View_profile() {
           <Navbar />
           <div className="body_2">
             <div className="relative">
-          
-              <div className="relative_2">
-              <h2>MAKE YOUR PROFILE</h2>
-              </div>
+              <h3>MAKE YOUR PROFILE:</h3>
+            
               <div className="container">
                 <div className="box">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJRUYr93nbyOZZD9zA0GdVThOWNPKpy22QOrjd9-5xY14UKIXek0i2_KMgtwKcvj3pYPA&usqp=CAU" alt=""></img>
+                <img src="https://i.pinimg.com/474x/55/df/36/55df36e7333026e57effca3ca5eec77a.jpg" alt=""></img>
                   <ul>
                       <label for="gender"><b>Gender:</b></label>
                       <input type="radio" id="male" name="gender" value="MALE"></input>

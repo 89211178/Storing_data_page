@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import Navbar from "../components/Navbar";
 
 function Singup() {
     const [name,setName] = useState("");
@@ -14,7 +13,7 @@ function Singup() {
         console.warn(item)
         console.log(item)
 
-        navigate('/Home', { replace: true });
+        navigate('/Login', { replace: true });
 
         let result = await fetch("http://88.200.63.148:3002/Singup", {
             method: 'POST',
@@ -32,7 +31,6 @@ function Singup() {
 
     return (
         <div>
-            <Navbar />
             <div className="body">
                 <div className="relative_1">
 

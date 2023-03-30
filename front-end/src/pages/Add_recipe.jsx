@@ -6,13 +6,11 @@ function Add_recipe() {
         <Navbar />
         <div className="body_2">
           <div className="relative">
+              <h3>ADD YOUR RECIPE:</h3>
 
-          <div className="relative_2">
-              <h2>ADD YOUR RECIPE</h2>
-              </div>
               <div className="container">
                 <div className="box">
-                <img src="https://cdn-icons-png.flaticon.com/512/8141/8141732.png" alt=""></img>
+                <img src="https://i.pinimg.com/474x/78/8b/ca/788bca142caf95ea3fa370639206a6fe.jpg" alt=""></img>
                   <ul>
                       <label for="name"><b>Name of the recipe:</b></label>
                       <input type="text" placeholder="Enter name of your recipe" name="name" required></input>

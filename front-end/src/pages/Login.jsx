@@ -1,14 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import Navbar from "../components/Navbar";
 
 function Login() {
     const [name,setName] = useState("");
     const [password,setPassword] = useState("");
     const navigate = useNavigate(); 
 
-    async function logIn() {
+    async function log_in() {
         let item= {name,password}
         console.warn(item)
         console.log(item)
@@ -29,9 +28,16 @@ function Login() {
         console.warn("result", result);
     }
 
+    async function sing_up() {
+        navigate('/Singup', { replace: true });
+    }
+
+    async function remember() {
+        navigate('/Remember', { replace: true });
+    }
+
     return (
         <div>
-            <Navbar />
             <div className="body">
                 <div className="relative_1">
             
@@ -47,12 +53,12 @@ function Login() {
                         <label for="psw"><b>Password:</b></label>
                         <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="from-control" placeholder="Enter Password" name="psw" required></input>
 
-                        <button onClick={logIn} type="log_in_btn">Login</button>
+                        <button onClick={log_in} className="log_in_btn">Login</button>
                     </div>
 
                     <div className="container_3">
-                        <button className="sing_up_btn">Sing_up</button>
-                        <span className="psw">Forgot <a href="#">password?</a></span>
+                        <button onClick={sing_up} className="sing_up_btn">Sing_up</button>
+                        <button onClick={remember} className="log_in_btn">Forgot_password?</button>
                     </div> 
 
                     </form>
