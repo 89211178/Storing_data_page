@@ -7,6 +7,7 @@ import Singup from "./Singup";
 import Remember from "./Remember";
 import Searched from "./Searched";
 import Recipe from "./Recipe";
+import Comments from "./Comments";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom"
@@ -24,44 +25,9 @@ function Pages() {
         <Route path="/Remember" exact element={<Remember />}/>
         <Route path="/searched/:search" exact element={<Searched />}/>
         <Route path="/recipe/:name" exact element={<Recipe />}/>
+        <Route path="/Comments" exact element={<Comments />}/>
       </Routes>
   );
   }
 
   export default Pages;
-  
-  /*let component
-  switch (window.location.pathname) {
-    case "/":
-      component = <Home />
-      break
-    case "/Home":
-      component = <Home />
-      break
-    case "/Find_recipe":
-      component = <Find_recipe />
-      break
-    case "/View_profile":
-      component = <View_profile />
-      break
-    case "/Add_recipe":
-      component = <Add_recipe />
-      break
-    case "/Login":
-      component = <Login />
-      break
-    case "/Singup":
-      component = <Singup />
-      break
-    case "/Find_recipe/searched:search":
-      component = <Searched />
-      break
-  }
-  return (
-    <>
-    <Navbar />
-    {component}
-    </>
-  )
-  }
-  */

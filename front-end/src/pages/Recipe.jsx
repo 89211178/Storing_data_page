@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components"; 
 import "../styles.css";
 import Navbar from "../components/Navbar";
+import Stars from "../components/Stars";
+import { useNavigate } from "react-router-dom"; 
 
 function Recipe() {
     let params = useParams();
@@ -21,26 +23,50 @@ function Recipe() {
         fetchDetails();
     },[params.name]);
 
+    const navigate = useNavigate(); 
+
+    async function comment() {
+        navigate('/Comments', { replace: true });
+    }
+
     return (
       <div>
         <Navbar />
         <div className="body_2">
-          <div className="relative_5">
+          <div className="relative">
             <Wrapper>
                 <div>
                     <h2>{details.title}</h2>
                     <img className="loading_3" src={details.image} alt=""></img>
                 </div>
                 <div>
-                    <h4>About the:</h4>
+                    <div className="star_rating" style={{ display: 'flex', alignItems: 'center' }}>
+                        <h4>Input star rating:</h4>
+                        <Stars />
+                    </div>
+
+                    <h3>About the:</h3>
                     <p dangerouslySetInnerHTML={{__html: details.summary}}></p>
                 </div>
+                <div>
+                    <h3>Instructions:</h3>
+                    <p dangerouslySetInnerHTML={{__html: details.instructions}}></p>
+                </div>
+                <div>
+                    <h3>Ingredients:</h3>
+                    <ul>
+                        {details && details.extendedIngredients && details.extendedIngredients.length > 0 ? (
+                        details.extendedIngredients.map((ingredient) => (
+                            <li key={ingredient.id}>{ingredient.original}</li>
+                        ))
+                        ) : (
+                        <li>No ingredients found.</li>
+                        )}
+                    </ul>
+                </div>
             </Wrapper>
-            <div>
-                <h4>Instructions:</h4>
-                <p dangerouslySetInnerHTML={{__html: details.instructions}}></p>
-            </div>
-            <h4>Ingredients:</h4>
+
+            <button type="submit" className="log_in_btn" onClick={comment}>Give star rating and comment</button>
           </div>
         </div>
       </div>
@@ -63,11 +89,3 @@ function Recipe() {
     }
   `
   export default Recipe;
-
-  /* 
-            <ul>
-                {details.extendedIngredients.map((ingredient) => (
-                    <li key={ingredient.id}> {ingredient.original} </li>
-                ))}
-            </ul>
-  */

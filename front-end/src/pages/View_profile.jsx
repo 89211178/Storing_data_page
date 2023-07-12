@@ -1,6 +1,14 @@
+import React from "react";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom"; 
 
 function View_profile() {
+    const navigate = useNavigate(); 
+
+    async function submit() {
+        navigate('/Home', { replace: true });
+    }
+
     return (
         <div>
           <Navbar />
@@ -32,17 +40,17 @@ function View_profile() {
                 <div className="About">
                     <ul>
                         <label for="info"><b>About me:</b></label>
-                        <input type="text" placeholder="Enter information about you" name="info" required></input>
+                        <textarea type="text" placeholder="Enter information about you" name="info" required />
                     </ul>
                     <ul>
                         <label for="added"><b>Added recpies:</b></label>
-                        <input type="text" placeholder="Your recipes ... :)" name="added" required></input>
+                        <textarea type="text" placeholder="Your recipes ... :)" name="added" required />
                     </ul>
                     <ul>
                         <label for="comm"><b>Comments and grades:</b></label>
-                        <input type="text" placeholder="Your comments and grades ... :)" name="comm" required></input>
+                        <textarea type="text" placeholder="Your comments and grades ... :)" name="comm" required />
                     </ul>
-                    <button type="change_profile_btn">Change profile</button>
+                    <button type="submit" className="log_in_btn" onClick={submit}>Change profile</button>
                 </div>
               </div>
 

@@ -10,11 +10,10 @@ function Login() {
     async function log_in() {
         let item= {name,password}
         console.warn(item)
-        console.log(item)
 
         navigate('/Home', { replace: true });
 
-        let result = await fetch("http://88.200.63.148:3002/Login", {
+        let result = await fetch("http://88.200.63.148:3004/Login", {
             method: 'POST',
             body: JSON.stringify(item),
             headers: {
@@ -47,10 +46,10 @@ function Login() {
                         
                     <form>
                     <div className="container_2">
-                        <label for="uname"><b>Username:</b></label>
+                        <label htmlFor ="uname"><b>Username:</b></label>
                         <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="from-control" placeholder="Enter Username" name="uname" required></input>
 
-                        <label for="psw"><b>Password:</b></label>
+                        <label htmlFor ="psw"><b>Password:</b></label>
                         <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="from-control" placeholder="Enter Password" name="psw" required></input>
 
                         <button onClick={log_in} className="log_in_btn">Login</button>

@@ -4,7 +4,7 @@ div.body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  height: 870px;
+  height: 850px;
 }
 
 div.body_2 {
@@ -24,12 +24,21 @@ div.body_3 {
   height: 750px;
 }
 
+input[name="rating"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
+
 div.relative {
   background-color: rgb(75, 97, 172);
   border: 15px solid rgb(9, 3, 85);
   top: 10px;
-  width: 85%;
-  height: 1700px;
+  width: 900px;
+  display: inline-block;
   position: relative;
   display: block;
   margin-left: auto;
@@ -39,46 +48,15 @@ div.relative {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
-div.relative_5 {
-  background-color: rgb(75, 97, 172);
-  border: 15px solid rgb(9, 3, 85);
-  top: 10px;
-  width: 85%;
-  height: 1700px;
+div.star_rating {
+  background-color: rgb(108, 129, 199);
+  border: 5px solid rgb(9, 3, 85);
+  height: 50px;
+  width: 550px;
   position: relative;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 50px;
-  font-family: "Lucida Console", "Courier New", monospace;
-}
-
-div.relative3 {
-  background-color: rgb(75, 97, 172);
-  border: 15px solid rgb(9, 3, 85);
-  top: 10px;
-  width: 85%;
-  height: 800px;
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 50px;
-  text-align: center;
-  font-family: "Lucida Console", "Courier New", monospace;
-}
-
-div.relative4 {
-  background-color: rgb(75, 97, 172);
-  border: 15px solid rgb(9, 3, 85);
-  top: 10px;
-  width: 85%;
-  height: 400px;
-  position: relative;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 50px;
   text-align: center;
   font-family: "Lucida Console", "Courier New", monospace;
 }
@@ -102,8 +80,6 @@ div.wrapper2 {
   background-color: rgb(99, 118, 179);
   height: 670px;
 }
-
-/* margin: 4rem 0rem; */
 
 p.recipe_titile {
   color:rgb(9, 3, 85);
@@ -131,8 +107,8 @@ img.loading{
 img.loading_3{
   border-radius: 2rem;
   border: 5px solid rgb(9, 3, 85);
-  width: 450px;
-  height: 350px;
+  width: 350px;
+  height: 300px;
   left: 20%;
 }
 
@@ -336,7 +312,7 @@ div.relative_2 {
 
 .container{
 display: flex;
-width: 1100px;
+width: 850px;
 height: 800px;
 padding: 20px 20px;
 }
@@ -344,3 +320,16 @@ padding: 20px 20px;
 .info {
   margin-left: 10rem;
 }
+
+textarea {
+  width: 350px;
+  height: 100px;
+  font-size: 12px;
+}
+
+textarea [type="feedback"] {
+  width: 850px;
+  height: 250px;
+  font-size: 12px;
+}
+

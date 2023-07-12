@@ -6,7 +6,7 @@ function Find_recipe() {
       <div>
         <Navbar />
         <div className="body_3">
-          <div className="relative4">
+          <div className="relative">
             <h2>SEARCH YOUR OWN RECIPE:</h2>
             <h3>Write what you are searching for:</h3>          
             <Search />

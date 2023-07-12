@@ -1,32 +1,30 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
+import axios from "axios";
 
 function Singup() {
-    const [name,setName] = useState("");
-    const [password,setPassword] = useState("");
-    const [mail,setMail] = useState("");
     const navigate = useNavigate();
 
-    async function singUp() {
-        let item= {name,password,mail}
-        console.warn(item)
-        console.log(item)
+    const [values, setValues] = useState({
+        name: '',
+        mail: '',
+        password: ''
+    })
 
-        navigate('/Login', { replace: true });
-
-        let result = await fetch("http://88.200.63.148:3002/Singup", {
-            method: 'POST',
-            body: JSON.stringify(item),
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": 'application/json',
-            }
-        })
-
-        result = await result.json();
-        localStorage.setItem("use-info",JSON.stringify(result)); 
-        console.warn("result", result)
+    const handelInput = (event) => {
+        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    }
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        axios.post('https://88.200.63.148:3004/singup', values)
+        .then(res => 
+            {
+                console.log(res)
+                navigate('/Login')
+            })
+        .catch(err => console.log(err))
     }
 
     return (
@@ -38,18 +36,18 @@ function Singup() {
                     <h1>CookSmart</h1>
                     </div>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                     <div className="container_2">
-                        <label for="uname"><b>Mail:</b></label>
-                        <input type="text" value={mail} onChange={(e)=>setMail(e.target.value)} className="from-control" placeholder="Enter Mail" name="mail" required></input>
+                        <label htmlFor ="mail"><b>Mail:</b></label>
+                        <input type="text" onChange={handelInput} placeholder="Enter Mail" name="mail" required></input>
 
-                        <label for="uname"><b>Username:</b></label>
-                        <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="from-control" placeholder="Enter Username" name="uname" required></input>
+                        <label htmlFor ="name"><b>Username:</b></label>
+                        <input type="text" onChange={handelInput} placeholder="Enter Username" name="name" required></input>
 
-                        <label for="psw"><b>Password:</b></label>
-                        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="from-control" placeholder="Enter Password" name="psw" required></input>
+                        <label htmlFor ="password"><b>Password:</b></label>
+                        <input type="password" onChange={handelInput} placeholder="Enter Password" name="password" required></input>
 
-                        <button onClick={singUp} className="sing_up_btn">Sing_up</button>
+                        <button type="submit" className="sing_up_btn">Sing_up</button>
                     </div>
                     </form>
 
@@ -60,3 +58,23 @@ function Singup() {
   }
   
   export default Singup;
+
+   /*
+
+   http://88.200.63.148:3002/SISIII2023/SISIII2023_89211178
+
+
+    const [inputs, setInputs] = useState({})
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}));
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post('http://88.200.63.148:3002/Signup/sing_up_btn', inputs);
+        console.log(inputs);
+    }
+    */

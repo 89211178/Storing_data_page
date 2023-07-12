@@ -23,6 +23,13 @@ function Home() {
           <Random />
           <Veggie />
           <Vegan />
+
+          <div className="about">
+              <h3>Spoštovani uporabnik,</h3>
+              Najlepša hvala za uporabo naše aplikacije za iskanje receptov! Vaša podpora in zvestoba
+              pomenita veliko za nas, in veseli nas, da smo vam lahko pomagali pri odkrivanju novih okusov
+              in pripravi slastnih obrokov.
+          </div>
           </div>
           </div>
     </div>

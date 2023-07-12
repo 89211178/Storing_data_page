@@ -16,7 +16,7 @@ function Random() {
 
   const getRandom = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=1`
+      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=3`
     );
     const data = await api.json();
     setRandom(data.recipes);
@@ -29,7 +29,7 @@ function Random() {
             <h3>RANDOM RECPIES</h3>
             <Splide
               options={ {
-                perPage: 4,
+                perPage: 3,
                 pagination: false,
                 arrows: false,
                 drag: "free",

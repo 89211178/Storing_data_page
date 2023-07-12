@@ -16,7 +16,7 @@ function Searched() {
 
         const getSearched = async (name) => {
             const api = await fetch(
-                `https://api.spoonacular.com/recipes/complexSearch?apiKey=a343dd3693c94a9389ac084809accae4&number=1&query=${name}`
+                `https://api.spoonacular.com/recipes/complexSearch?apiKey=a343dd3693c94a9389ac084809accae4&number=6&query=${name}`
             );
         const recipes = await api.json();
         setSearchedRecipes(recipes.results);
@@ -32,7 +32,7 @@ function Searched() {
         <div>
           <Navbar />
           <div className="body">
-            <div className="relative3">
+            <div className="relative">
               <h3>Searched recipes:</h3>
               <div className="wrapper2">
                 <Grid>
@@ -56,7 +56,7 @@ function Searched() {
 
     const Grid = styled.div`
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       column-gap: 5px;
       
     `;

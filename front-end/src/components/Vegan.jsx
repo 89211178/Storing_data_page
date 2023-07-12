@@ -16,7 +16,7 @@ function Vegan() {
 
   const getVegan = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=1&tags=vegan`
+      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=3&tags=vegan`
     );
     const data = await api.json();
     setVegan(data.recipes);
@@ -29,7 +29,7 @@ function Vegan() {
             <h3>VEGAN RECIPES</h3>
             <Splide
               options={ {
-                perPage: 4,
+                perPage: 3,
                 pagination: false,
                 arrows: false,
                 drag: "free",

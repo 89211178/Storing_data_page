@@ -3,7 +3,7 @@ const  conn = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS, 
-    database: 'Qcodeigniter',
+    database: process.env.DB_DATABASE,
   })
 
  conn.connect((err) => {
