@@ -23,11 +23,49 @@ function Recipe() {
         fetchDetails();
     },[params.name]);
 
+    //-------------------------------------------------
+    const [link, setLink] = useState('');
+    const [lastPart, setLastPart] = useState('');
+  
+    useEffect(() => {
+      const currentLink = window.location.href;
+      setLink(currentLink);
+    }, []);
+  
+    useEffect(() => {
+      const extractedPart = extract_id(link);
+      setLastPart(extractedPart);
+    }, [link]);
+    //-------------------------------------------------
+
     const navigate = useNavigate(); 
+    const userEmail = localStorage.getItem("userEmail"); // Retrieve user's email from local storage
+
+    function comment() {
+      const recipeId = extract_id(link);
+      navigate(`/Comments?recipe_id=${recipeId}&user_mail=${userEmail}`, { replace: true });
+    }
+    
+    function extract_id(link) {
+        const parts = link.split('/');
+        const lastPart = parts[parts.length - 1];
+        return lastPart;
+    }
+
+    /*
+    const [userEmail, setUserEmail] = useState("");
 
     async function comment() {
-        navigate('/Comments', { replace: true });
+      const recipeId = extract_id(link);
+      navigate(`/Comments?recipe_id=${recipeId}&user_mail=${userEmail}`, { replace: true });
     }
+    
+    function extract_id(link) {
+        const parts = link.split('/');
+        const lastPart = parts[parts.length - 1];
+        return lastPart;
+    }
+    */
 
     return (
       <div>
@@ -89,3 +127,9 @@ function Recipe() {
     }
   `
   export default Recipe;
+  
+  /*
+    <div>
+        <p>Current Link: {link}</p>{lastPart && (<p>Last Part: {lastPart}</p>)}
+    </div>
+  */

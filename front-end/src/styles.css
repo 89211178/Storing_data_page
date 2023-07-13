@@ -33,6 +33,11 @@ input[name="rating"] {
   transition: color 200ms;
 }
 
+.text-danger {
+  color:red;
+  font-size: 10px;
+}
+
 div.relative {
   background-color: rgb(75, 97, 172);
   border: 15px solid rgb(9, 3, 85);

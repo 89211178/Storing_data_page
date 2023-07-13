@@ -16,7 +16,7 @@ function Random() {
 
   const getRandom = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=3`
+      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=1`
     );
     const data = await api.json();
     setRandom(data.recipes);

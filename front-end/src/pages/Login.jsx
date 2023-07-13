@@ -1,30 +1,40 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Login_Validation from "../components/Login_Validation";
+import "../styles.css";
 
 function Login() {
-    const [name,setName] = useState("");
-    const [password,setPassword] = useState("");
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
-    async function log_in() {
-        let item= {name,password}
-        console.warn(item)
+    const [values, setValues] = useState({
+        mail: "",
+        password: "",
+    });
 
-        navigate('/Home', { replace: true });
+    const [errors, setErrors] = useState({})
 
-        let result = await fetch("http://88.200.63.148:3004/Login", {
-            method: 'POST',
-            body: JSON.stringify(item),
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": 'application/json',
+    const handleInput = (event) => {
+        setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setErrors(Login_Validation(values));
+        if (errors.mail === "" && errors.password === "") {
+        axios.post("http://88.200.63.148:3061/Login", values)
+        .then (res => {
+            if (res.data === "Success") {
+                localStorage.setItem("userEmail", values.mail); // Store user's email in local storage
+                navigate('/Home');
+                alert("Welcome back to CookSmart")
+            }
+            else {
+                alert("Mail and password are incorrect");
             }
         })
-
-        result = await result.json();
-        localStorage.setItem("use-info",JSON.stringify(result)); 
-        console.warn("result", result);
+        .catch (err => console.log(err));
+    }
     }
 
     async function sing_up() {
@@ -44,22 +54,44 @@ function Login() {
                     <h1>CookSmart</h1>
                     </div>
                         
-                    <form>
+                    <form onSubmit={handleSubmit}>
                     <div className="container_2">
-                        <label htmlFor ="uname"><b>Username:</b></label>
-                        <input type="text" value={name} onChange={(e)=>setName(e.target.value)} className="from-control" placeholder="Enter Username" name="uname" required></input>
 
-                        <label htmlFor ="psw"><b>Password:</b></label>
-                        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="from-control" placeholder="Enter Password" name="psw" required></input>
+                        <label htmlFor="mail">
+                          <b>Mail:</b>
+                        </label>
+                        <input
+                          type="text"
+                          onChange={handleInput}
+                          placeholder="Enter Mail"
+                          name="mail"
+                          required
+                        />
+                        {errors.mail && <span className="text-danger"> {errors.mail} </span>}
 
-                        <button onClick={log_in} className="log_in_btn">Login</button>
+                        <br></br>
+
+                        <label htmlFor="password">
+                            <b>Password:</b>
+                        </label>
+                        <input
+                            type="password"
+                            onChange={handleInput}
+                            placeholder="Enter Password"
+                            name="password"
+                            required
+                        />
+                        {errors.password && <span className="text-danger"> {errors.password} </span>}
+
+                        <br></br>
+
+                        <button type="submit" className="sing_up_btn">Login</button>
                     </div>
 
                     <div className="container_3">
                         <button onClick={sing_up} className="sing_up_btn">Sing_up</button>
                         <button onClick={remember} className="log_in_btn">Forgot_password?</button>
                     </div> 
-
                     </form>
 
                 </div>
@@ -69,24 +101,3 @@ function Login() {
   }
   
   export default Login;
-
-/*
-
-                    <div className="container_2">
-                        <label for="uname"><b>Username:</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required></input>
-
-                        <label for="psw"><b>Password:</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required></input>
-
-                        <button type="sing_up_btn">Login</button>
-                        <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me</input>
-                        </label>
-                    </div>
-
-                    <div className="container_2">
-                        <button className="sing_up_btn">Sing_up</button>
-                        <span className="psw">Forgot <a href="#">password?</a></span>
-                    </div> 
-*/
