@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaStar } from "react-icons/fa"
 import "../styles.css";
 
-const Stars = ({ onChange }) => {
+const All_comm = ({ onChange }) => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
 
@@ -38,4 +38,4 @@ const Stars = ({ onChange }) => {
     );
 };
 
-export default Stars;
+export default All_comm;

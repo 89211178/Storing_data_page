@@ -8,6 +8,8 @@ import Remember from "./Remember";
 import Searched from "./Searched";
 import Recipe from "./Recipe";
 import Comments from "./Comments";
+import View_comments from "./View_comments";
+import Make_profile from "./Make_profile";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom"
@@ -26,6 +28,8 @@ function Pages() {
         <Route path="/searched/:search" exact element={<Searched />}/>
         <Route path="/recipe/:name" exact element={<Recipe />}/>
         <Route path="/Comments" exact element={<Comments />}/>
+        <Route path="/View_comments" exact element={<View_comments />}/>
+        <Route path="/Make_profile" exact element={<Make_profile />}/>
       </Routes>
   );
   }

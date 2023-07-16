@@ -57,7 +57,7 @@ div.star_rating {
   background-color: rgb(108, 129, 199);
   border: 5px solid rgb(9, 3, 85);
   height: 50px;
-  width: 550px;
+  width: 350px;
   position: relative;
   display: block;
   margin-left: auto;
@@ -159,7 +159,7 @@ div.about {
   color: #fff;
   padding: 30px 30px;
   border-radius: 20px;
-  height: 700;
+  height: 400px;
 }
 
 .box img {
@@ -177,7 +177,7 @@ div.about {
   background-color: #fff;
   border-radius: 20px;
   width: 1300px;
-  height: 700;
+  height: 400px;
 }
 
 .About2 {
@@ -318,7 +318,7 @@ div.relative_2 {
 .container{
 display: flex;
 width: 850px;
-height: 800px;
+height: 600px;
 padding: 20px 20px;
 }
 

@@ -78,11 +78,6 @@ function Recipe() {
                     <img className="loading_3" src={details.image} alt=""></img>
                 </div>
                 <div>
-                    <div className="star_rating" style={{ display: 'flex', alignItems: 'center' }}>
-                        <h4>Input star rating:</h4>
-                        <Stars />
-                    </div>
-
                     <h3>About the:</h3>
                     <p dangerouslySetInnerHTML={{__html: details.summary}}></p>
                 </div>

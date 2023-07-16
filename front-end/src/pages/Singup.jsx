@@ -13,7 +13,8 @@ function Signup() {
     password: "",
   });
 
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({});
+  const [isEmailAvailable, setIsEmailAvailable] = useState(true); // Track email availability
 
   const handleInput = (event) => {
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -22,14 +23,40 @@ function Signup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrors(Singup_Validation(values));
-    if (errors.mail === "" && errors.name === "" && errors.password === "") {
-      axios.post("http://88.200.63.148:3061/Singup", values)
-      .then (res => {
-        navigate('/Login')
-      })
-      .catch (err => console.log(err));
-  }
-}
+
+    if (errors.mail === "" && errors.name === "" && errors.password === "" && isEmailAvailable) {
+      axios
+        .post("http://88.200.63.148:3078/Singup", values)
+        .then((res) => {
+          navigate("/Login");
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const checkEmailAvailability = async () => {
+    try {
+      const response = await axios.get(
+        `http://88.200.63.148:3078/checkEmailAvailability?mail=${values.mail}`
+      );
+
+      if (response.data.exists) {
+        setErrors((prev) => ({
+          ...prev,
+          mail: "That mail is already in use",
+        }));
+        setIsEmailAvailable(false); // Set flag to false if email is already in use
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          mail: "",
+        }));
+        setIsEmailAvailable(true); // Set flag to true if email is available
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -47,11 +74,12 @@ function Signup() {
               <input
                 type="text"
                 onChange={handleInput}
+                onBlur={checkEmailAvailability}
                 placeholder="Enter Mail"
                 name="mail"
                 required
               />
-              {errors.mail && <span className="text-danger"> {errors.mail} </span>}
+              {errors.mail && <span className="text-danger">{errors.mail}</span>}
 
               <br></br>
 
@@ -65,9 +93,9 @@ function Signup() {
                 name="name"
                 required
               />
-               {errors.name && <span className="text-danger"> {errors.name} </span>}
+              {errors.name && <span className="text-danger">{errors.name}</span>}
 
-               <br></br>
+              <br></br>
 
               <label htmlFor="password">
                 <b>Password:</b>
@@ -79,11 +107,15 @@ function Signup() {
                 name="password"
                 required
               />
-               {errors.password && <span className="text-danger"> {errors.password} </span>}
+              {errors.password && (
+                <span className="text-danger">{errors.password}</span>
+              )}
 
-               <br></br>
+              <br></br>
 
-              <button type="submit" className="sing_up_btn">Sign Up</button>
+              <button type="submit" className="sing_up_btn" disabled={!isEmailAvailable}>
+                Sign Up
+              </button>
             </div>
           </form>
         </div>
