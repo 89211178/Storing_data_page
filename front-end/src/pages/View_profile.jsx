@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function View_profile() {
+  const [userEmail, setUserEmail] = useState(""); // Move the userEmail state inside the component
+  const [username, setUsername] = useState("");
   const [profile, setProfile] = useState({
     firstname: "",
     lastname: "",
@@ -12,10 +14,12 @@ function View_profile() {
 
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail"); // Retrieve user's email from local storage
+    setUserEmail(userEmail); // Set the userEmail state
 
+    // Retrieve username from MySQL table Uporabnik based on user's email
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3078/Get_profile/${encodeURIComponent(userEmail)}`);
+        const response = await axios.get(`http://88.200.63.148:3082/Get_profile/${encodeURIComponent(userEmail)}`);
         const { firstname, lastname, about } = response.data;
         setProfile({ firstname, lastname, about });
       } catch (error) {
@@ -24,7 +28,7 @@ function View_profile() {
     };
 
     fetchProfile();
-  }, []);
+  }, [userEmail]); // Add userEmail as a dependency to useEffect
 
   const navigate = useNavigate();
 
@@ -35,14 +39,22 @@ function View_profile() {
   return (
     <div>
       <Navbar />
-      <div className="body_2">
+      <div className="body">
         <div className="relative">
           <h3>VIEW YOUR PROFILE:</h3>
           <div className="container">
             <div className="box">
               <img src="https://i.pinimg.com/474x/55/df/36/55df36e7333026e57effca3ca5eec77a.jpg" alt="" />
               <ul>
-                <label htmlFor="firstname">
+                <label htmlFor="mail">
+                  <b>Mail:</b>
+                </label>
+                <h5>{userEmail}</h5>
+              </ul>
+            </div>
+            <div className="About">
+              <ul>
+              <label htmlFor="firstname">
                   <b>Firstname:</b>
                 </label>
                 <input type="text" placeholder="No information given yet" name="firstname" value={profile.firstname} readOnly />
@@ -51,10 +63,7 @@ function View_profile() {
                   <b>Lastname:</b>
                 </label>
                 <input type="text" placeholder="No information given yet" name="lastname" value={profile.lastname} readOnly />
-              </ul>
-            </div>
-            <div className="About">
-              <ul>
+
                 <label htmlFor="about">
                   <b>About me:</b>
                 </label>
@@ -72,10 +81,3 @@ function View_profile() {
 }
 
 export default View_profile;
-
-/*
-<ul>
-  <label htmlFor="comm"><b>Comments and grades:</b></label>
-  <textarea placeholder="Your comments and grades ... :)" name="comm" required />
-</ul>
-*/

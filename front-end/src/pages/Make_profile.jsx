@@ -20,40 +20,22 @@ function Make_profile() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const { mail, firstname, lastname, about } = values;
-      const profileExistsResponse = await axios.get(`http://88.200.63.148:3078/Get_profile/${encodeURIComponent(mail)}`);
-  
-      if (profileExistsResponse.status === 200) {
-        // Profile already exists, perform update
-        const response = await axios.put(`http://88.200.63.148:3078/Make_profile/${encodeURIComponent(mail)}`, {
-          firstname,
-          lastname,
-          about,
-        });
-  
-        if (response.data === "Success") {
-          navigate("/View_profile");
-          alert("Profile updated successfully.");
-        } else {
-          alert("Failed to update profile. Please try again later.");
-        }
-      } else if (profileExistsResponse.status === 404) {
-        // Profile doesn't exist, perform insert
-        const response = await axios.post(`http://88.200.63.148:3078/Make_profile/${encodeURIComponent(mail)}`, {
-          mail,
-          firstname,
-          lastname,
-          about,
-        });
-  
-        if (response.data === "Success") {
-          navigate("/View_profile");
-          alert("Profile created successfully.");
-        } else {
-          alert("Failed to create profile. Please try again later.");
-        }
+
+      const response = await axios.post(`http://88.200.63.148:3082/Make_profile`, {
+        mail,
+        firstname,
+        lastname,
+        about,
+      });
+
+      if (response.data === "Success") {
+        navigate("/View_profile");
+        alert("Profile updated successfully.");
+      } else {
+        alert("Failed to update profile. Please try again later.");
       }
     } catch (error) {
       console.error(error);
@@ -64,7 +46,7 @@ function Make_profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3078/Get_profile/${encodeURIComponent(userEmail)}`);
+        const response = await axios.get(`http://88.200.63.148:3082/Get_profile/${encodeURIComponent(userEmail)}`);
 
         if (response.status === 200) {
           const { firstname, lastname, about } = response.data;
@@ -81,10 +63,10 @@ function Make_profile() {
   return (
     <div>
       <Navbar />
-      <div className="body_2">
+      <div className="body">
         <div className="relative">
           <h3>MAKE YOUR PROFILE:</h3>
-          <div className="container">
+          <div className="container_4">
             <div className="box">
               <img src="https://i.pinimg.com/474x/55/df/36/55df36e7333026e57effca3ca5eec77a.jpg" alt="" />
 
@@ -92,7 +74,8 @@ function Make_profile() {
                 <ul>
                   <label htmlFor="firstname">
                     <b>Firstname:</b>
-                  </label>
+                  </label>   
+                  <br></br>                    
                   <input
                     type="text"
                     placeholder="Enter Firstname"
@@ -102,9 +85,12 @@ function Make_profile() {
                     required
                   />
 
+                  <br></br>
+
                   <label htmlFor="lastname">
                     <b>Lastname:</b>
                   </label>
+                  <br></br>
                   <input
                     type="text"
                     placeholder="Enter Lastname"
@@ -114,10 +100,12 @@ function Make_profile() {
                     required
                   />
 
+                  <br></br>
+
                   <label htmlFor="about">
                     <b>About me:</b>
                   </label>
-                  <br />
+                  <br></br>
                   <textarea
                     type="text"
                     placeholder="Enter information about you"
@@ -127,7 +115,7 @@ function Make_profile() {
                     required
                   />
                 </ul>
-                <button type="submit" className="sing_up_btn">
+                <button type="submit" className="submit_btn">
                   Save changes
                 </button>
               </form>

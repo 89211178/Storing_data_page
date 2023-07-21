@@ -10,6 +10,9 @@ import Recipe from "./Recipe";
 import Comments from "./Comments";
 import View_comments from "./View_comments";
 import Make_profile from "./Make_profile";
+import Find_user from "./Find_user";
+import Recipe_comment from "./Recipe_comment";
+import User_profile from "./User_profile";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom"
@@ -30,6 +33,9 @@ function Pages() {
         <Route path="/Comments" exact element={<Comments />}/>
         <Route path="/View_comments" exact element={<View_comments />}/>
         <Route path="/Make_profile" exact element={<Make_profile />}/>
+        <Route path="/Find_user" exact element={<Find_user />}/>
+        <Route path="/Recipe_comment" exact element={<Recipe_comment />}/>
+        <Route path="/User_profile/*" element={<User_profile />} />
       </Routes>
   );
   }

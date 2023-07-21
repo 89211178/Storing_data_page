@@ -26,7 +26,7 @@ function Signup() {
 
     if (errors.mail === "" && errors.name === "" && errors.password === "" && isEmailAvailable) {
       axios
-        .post("http://88.200.63.148:3078/Singup", values)
+        .post("http://88.200.63.148:3082/Singup", values)
         .then((res) => {
           navigate("/Login");
         })
@@ -37,7 +37,7 @@ function Signup() {
   const checkEmailAvailability = async () => {
     try {
       const response = await axios.get(
-        `http://88.200.63.148:3078/checkEmailAvailability?mail=${values.mail}`
+        `http://88.200.63.148:3082/checkEmailAvailability?mail=${values.mail}`
       );
 
       if (response.data.exists) {

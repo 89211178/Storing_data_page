@@ -12,6 +12,7 @@
     "express-session": "^1.17.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.5.1",
+    "node-fetch": "^3.3.1",
     "postcss-normalize-charset": "^5.1.0",
     "postcss-normalize-positions": "^5.1.1",
     "postcss-normalize-repeat-style": "^5.1.1",
