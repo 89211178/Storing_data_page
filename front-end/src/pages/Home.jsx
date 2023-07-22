@@ -11,24 +11,26 @@ function Home() {
         <div className="relative">
           <div className="about">
               <h2>ABOUT COOKSMART:</h2>
-                S strahom pred kuharijo se srečuje veliko ljudi vsak dan. Veliko ljudi se sploh ne zaveda,
-                kaj vse lahko pripravijo z ostanki ali pa majhno količino sestavin, ki jih imajo doma.
-                Zaradi tega raje naročijo hrano katera ni vedno zdrava, saj je hitro pripravljena. To pa
-                ni dobro v veliko primerih, saj se z naročevanjem hitro pripravljene hrane, zadovoljivo
-                s slabo prehrano. Ta pa se lahko po dolgem času zelo hitro prikaže v njihovem slabšem
-                zdravju. Zato menim, da bi ta informacijski sistem zelo pripomogel k izboljšanju zdravja
-                in mogoče celo spremenil način življenja za tiste, ki nimajo časa pripraviti obrok ali pa
-                niso tako naučeni receptov in bi potrebovali lažjo izbiro.
+              Many people encounter fear in front of the kitchen every day. They often underestimate the 
+              potential of creating delicious meals with leftovers or limited ingredients they have at 
+              home. As a result, they tend to opt for fast and unhealthy food options, which may not be 
+              beneficial for their overall well-being. Ordering quickly prepared meals regularly can lead 
+              to an unsatisfactory diet and negatively impact their health over time. I believe that an 
+              informational system could significantly contribute to improving people's health and 
+              potentially even change their lifestyle, especially for those who lack the time to cook or 
+              are not well-versed in recipes, seeking a more convenient choice. Such a system could 
+              provide helpful tips and creative ways to use available ingredients, encouraging healthier 
+              meal choices and ultimately promoting better health outcomes for its users.
           </div>
           <Random />
           <Veggie />
           <Vegan />
 
           <div className="about">
-              <h3>Spoštovani uporabnik,</h3>
-              Najlepša hvala za uporabo naše aplikacije za iskanje receptov! Vaša podpora in zvestoba
-              pomenita veliko za nas, in veseli nas, da smo vam lahko pomagali pri odkrivanju novih okusov
-              in pripravi slastnih obrokov.
+              <h3>Dear user,</h3>
+              Thank you so much for using our recipe search application! Your support and loyalty mean 
+              a lot to us, and we are delighted to have helped you discover new flavors and create 
+              delicious meals.
           </div>
           </div>
           </div>

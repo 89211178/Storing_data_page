@@ -13,6 +13,7 @@ import Make_profile from "./Make_profile";
 import Find_user from "./Find_user";
 import Recipe_comment from "./Recipe_comment";
 import User_profile from "./User_profile";
+import Sources from "./Sources";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom"
@@ -36,6 +37,7 @@ function Pages() {
         <Route path="/Find_user" exact element={<Find_user />}/>
         <Route path="/Recipe_comment" exact element={<Recipe_comment />}/>
         <Route path="/User_profile/*" element={<User_profile />} />
+        <Route path="/Sources" element={<Sources />} />
       </Routes>
   );
   }

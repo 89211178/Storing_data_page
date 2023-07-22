@@ -6,10 +6,10 @@ export default function Navbar() {
       <div className="nav-links">
         <CustomLink href="/Home">Home page</CustomLink>
         <CustomLink href="/Find_recipe">Find recipe</CustomLink>
-        <CustomLink href="/View_comments">View comments</CustomLink>
         <CustomLink href="/Find_user">Find user</CustomLink>
         <CustomLink href="/View_profile">Your profile</CustomLink>
         <CustomLink href="/Add_recipe">Add recipe</CustomLink>
+        <CustomLink href="/Sources">Sources</CustomLink>
         <CustomLink href="/Login">Log out</CustomLink>
       </div>
     </div>

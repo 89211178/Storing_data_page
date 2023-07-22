@@ -31,10 +31,10 @@ function User_profile() {
     return (
       <div>
         <Navbar />
-        <div className="body_2">
+        <div className="body">
           <div className="relative">
             <h3>USER PROFILE:</h3>
-            <p>Loading...</p>
+            <p>No profile for this email was yet made.</p>
           </div>
         </div>
       </div>

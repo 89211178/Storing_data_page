@@ -51,6 +51,12 @@ function Recipe() {
     return lastPart;
   }
 
+  function comments() {
+    const recipeId = extract_id(link);
+    const recipeTitle = details.title; // Get the recipe title from the details state
+    navigate(`/View_comments?recipe_title=${recipeTitle}`, { replace: true });
+  }
+
   return (
     <div>
       <Navbar />
@@ -84,6 +90,7 @@ function Recipe() {
           </Wrapper>
 
           <button type="submit" className="log_in_btn" onClick={comment}>Give star rating and comment</button>
+          <button type="submit" className="submit_btn" onClick={comments}>View star ratings and comments</button>
         </div>
       </div>
     </div>

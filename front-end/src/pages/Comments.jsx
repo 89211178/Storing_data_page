@@ -1,4 +1,3 @@
-
 import Navbar from "../components/Navbar";
 import Stars from "../components/Stars";
 import React, { useState } from "react";

@@ -144,20 +144,6 @@ app.get("/Get_profile/:email", (req, res) => {
   });
 });
 
-app.get("/Get_all_profiles", (req, res) => {
-  const query = "SELECT * FROM Profil";
-
-  // Execute the query to get all profiles from the database
-  connection.query(query, (err, results) => {
-    if (err) {
-      console.error("Error fetching profiles from database:", err);
-      res.status(500).json({ error: "Error fetching profiles from database" });
-    } else {
-      res.json(results);
-    }
-  });
-});
-
 //-------------------------------------------------------------------
 
 app.post("/Comments", (req, res) => {
@@ -178,21 +164,48 @@ app.post("/Comments", (req, res) => {
   });
 });
 
-app.get("/api/getComments/:recipeId", (req, res) => {
-  const recipeId = req.params.recipeId;
-  const sql = "SELECT * FROM Komentar WHERE recipe_id = ?";
-  db.query(sql, [recipeId], (err, result) => {
-    if (err) {
-      console.error("Error fetching comments:", err);
-      return res.status(500).json({ message: "Error in Node" });
-    }
+app.get("/api/comments", (req, res) => {
+  const recipeTitle = req.query.recipe_title;
 
-    return res.json(result);
+  if (!recipeTitle) {
+    return res.status(400).json({ error: "Missing recipe_title query parameter" });
+  }
+
+  // Perform the MySQL query to get the comments for the specified recipe_title
+  const query = "SELECT rating, comment, user_mail FROM Komentar WHERE recipe_title = ?";
+  db.query(query, [recipeTitle], (err, results) => {
+    if (err) {
+      console.error("Error fetching comments from MySQL:", err);
+      res.status(500).json({ error: "Error fetching comments from MySQL" });
+    } else {
+      res.json(results);
+    }
   });
 });
 
-/*
 
+/*
+app.get("/api/comments", (req, res) => {
+  const recipeTitle = req.query.recipe_title;
+
+  if (!recipeTitle) {
+    return res.status(400).json({ error: "Missing recipe_title query parameter" });
+  }
+
+  // Perform the MySQL query to get the comments for the specified recipe_title
+  const query = "SELECT rating, comment, user_mail FROM Komentar WHERE recipe_title = ?";
+  db.query(query, [recipeTitle], (err, results) => {
+    if (err) {
+      console.error("Error fetching comments from MySQL:", err);
+      res.status(500).json({ error: "Error fetching comments from MySQL" });
+    } else {
+      res.json(results);
+    }
+  });
+});
+*/
+
+/*
 const express = require("express");
 const cors = require("cors");
 const app = express();
