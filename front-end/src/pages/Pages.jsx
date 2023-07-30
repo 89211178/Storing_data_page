@@ -11,9 +11,12 @@ import Comments from "./Comments";
 import View_comments from "./View_comments";
 import Make_profile from "./Make_profile";
 import Find_user from "./Find_user";
-import Recipe_comment from "./Recipe_comment";
 import User_profile from "./User_profile";
 import Sources from "./Sources";
+import Favourite from "./Favourite";
+import Fav_recipe from "./Fav_recipe";
+import Commented from "./Commented";
+import Com_recipe from "./Com_recipe";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom"
@@ -35,9 +38,12 @@ function Pages() {
         <Route path="/View_comments" exact element={<View_comments />}/>
         <Route path="/Make_profile" exact element={<Make_profile />}/>
         <Route path="/Find_user" exact element={<Find_user />}/>
-        <Route path="/Recipe_comment" exact element={<Recipe_comment />}/>
         <Route path="/User_profile/*" element={<User_profile />} />
         <Route path="/Sources" element={<Sources />} />
+        <Route path="/Favourite" element={<Favourite />} />
+        <Route path="/Fav_recipe/:name" element={<Fav_recipe />} />
+        <Route path="/Commented" element={<Commented />} />
+        <Route path="/Com_recipe/:recipe_title" element={<Com_recipe />} />
       </Routes>
   );
   }

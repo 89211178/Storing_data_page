@@ -16,12 +16,16 @@ function Vegan() {
 
   const getVegan = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=a343dd3693c94a9389ac084809accae4&number=1&tags=vegan`
+      `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4&tags=vegan`
     );
     const data = await api.json();
     setVegan(data.recipes);
     console.log(data.recipes);
   };
+
+  if (!vegan.length) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>

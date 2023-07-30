@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import axios from "axios";
 import Stars_displayed from "../components/Stars_displayed";
-import { useNavigate } from "react-router-dom"; 
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function View_comments() {
-  const navigate = useNavigate(); 
+function Com_recipe() {
+  const navigate = useNavigate();
+  const { recipe_title } = useParams();
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const recipeTitleParam = new URLSearchParams(window.location.search).get("recipe_title");
-  const recipeTitle = recipeTitleParam ? decodeURIComponent(recipeTitleParam) : "";
   const [hover, setHover] = useState(null);
 
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3084/api/comments?recipe_title=${encodeURIComponent(recipeTitle)}`);
+        const response = await axios.get(`http://88.200.63.148:3084/api/comments?recipe_title=${encodeURIComponent(recipe_title)}`);
         setComments(response.data);
         setLoading(false);
       } catch (error) {
@@ -27,11 +26,11 @@ function View_comments() {
     };
 
     fetchComments();
-  }, [recipeTitle]);
+  }, [recipe_title]);
 
   async function back() {
-    navigate('/Home', { replace: true });
-}
+    navigate('/Commented', { replace: true });
+  }
 
   return (
     <div>
@@ -39,14 +38,15 @@ function View_comments() {
       <div className="body">
         <div className="relative">
           <div className="about">
-            <h2>Comments for recipe: 
-              <br /> {recipeTitle}</h2>
+            <h2>
+              Comments for recipe: <br /> {recipe_title}
+            </h2>
             {comments.length === 0 ? (
               <h4>No comments for this recipe were yet made.</h4>
             ) : (
               <>
                 {comments.map((comment) => (
-                  <ul key={comment.com_id}>
+                  <ul key={comment.rating}>
                     <h4>User Mail: {comment.user_mail}</h4>
                     <h4>User rating and comment:</h4>
                     <Stars_displayed rating={comment.rating} hover={hover} readOnly />
@@ -55,7 +55,9 @@ function View_comments() {
                 ))}
               </>
             )}
-            <button type="submit" onClick={back} className="save_changes_btn">Go back to Searching recipes</button>
+            <button type="submit" onClick={back} className="submit_btn">
+              Go back to Commented recipes
+            </button>
           </div>
         </div>
       </div>
@@ -63,4 +65,4 @@ function View_comments() {
   );
 }
 
-export default View_comments;
+export default Com_recipe;

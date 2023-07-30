@@ -17,20 +17,42 @@ function Sources() {
                 <br></br>
                 <a href="https://spoonacular.com/food-api" target="_blank">Visit Spoonacular Website</a>
           </div>
+          
+          <br></br>
 
-          <div className="about">
+          <div className="box">
                 <h3>All images links:</h3>
-                <img className="loading" src="https://64.media.tumblr.com/6810b430af2c641b74eec5d23e8071ab/tumblr_o6cpgdzwsh1vnqmpbo1_500.gif" alt=""></img>
+
+                <img src="https://64.media.tumblr.com/6810b430af2c641b74eec5d23e8071ab/tumblr_o6cpgdzwsh1vnqmpbo1_500.gif" alt=""></img>
+                <br></br>
                 https://64.media.tumblr.com/6810b430af2c641b74eec5d23e8071ab/tumblr_o6cpgdzwsh1vnqmpbo1_500.gif
                 <br></br>
-                <img className="loading" src="https://media.tenor.com/d3HwOIP8L5cAAAAC/da-bears.gif" alt=""></img>
+
+                <img src="https://media.tenor.com/d3HwOIP8L5cAAAAC/da-bears.gif" alt=""></img>
+                <br></br>
                 https://media.tenor.com/d3HwOIP8L5cAAAAC/da-bears.gif
                 <br></br>
-                <img className="loading" src="https://i.pinimg.com/474x/55/df/36/55df36e7333026e57effca3ca5eec77a.jpg" alt="" />
+
+                <img src="https://media.tenor.com/Tca53SnqO8IAAAAM/we-bare-bears-believe.gif" alt=""></img>
+                <br></br>
+                https://media.tenor.com/Tca53SnqO8IAAAAM/we-bare-bears-believe.gif
+                <br></br>
+
+                <img src="https://i.pinimg.com/474x/55/df/36/55df36e7333026e57effca3ca5eec77a.jpg" alt="" />
+                <br></br>
                 https://i.pinimg.com/474x/55/df/36/55df36e7333026e57effca3ca5eec77a.jpg
                 <br></br>
-                <img className="loading_2" src="https://media.tenor.com/Tca53SnqO8IAAAAM/we-bare-bears-believe.gif" alt=""></img>
-                https://media.tenor.com/Tca53SnqO8IAAAAM/we-bare-bears-believe.gif
+
+                <img src="https://i.pinimg.com/474x/78/8b/ca/788bca142caf95ea3fa370639206a6fe.jpg" alt="" />
+                <br></br>
+                https://i.pinimg.com/474x/78/8b/ca/788bca142caf95ea3fa370639206a6fe.jpg
+                <br></br>
+
+                <img src="https://cdn.icon-icons.com/icons2/1859/PNG/512/fooddome_117914.png" alt="" />
+                <br></br>
+                https://cdn.icon-icons.com/icons2/1859/PNG/512/fooddome_117914.png
+                <br></br>
+
           </div>
 
           <div className="about">

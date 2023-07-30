@@ -16,7 +16,7 @@ function Find_user() {
 
   const fetchAllProfiles = async () => {
     try {
-      const response = await axios.get("http://88.200.63.148:3082/Get_profile");
+      const response = await axios.get("http://88.200.63.148:3084/Get_profile");
       setAllProfiles(response.data);
     } catch (error) {
       console.error(error);
@@ -32,7 +32,7 @@ function Find_user() {
   };
 
   const handleProfileClick = (email) => {
-    const emailWithAt = email.replace(/@/g, "%40"); // Replace @ with %40 for query parameter
+    const emailWithAt = email.replace(/@/g, "%40"); 
     navigate(`/User_profile?user_mail=${encodeURIComponent(emailWithAt)}`);
   };
 

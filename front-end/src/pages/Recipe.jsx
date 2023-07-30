@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -12,7 +11,7 @@ function Recipe() {
 
   const fetchDetails = async () => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=a343dd3693c94a9389ac084809accae4`
+      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=fef7bde6dbcb48898e88261caf38dc5c`
     );
     const detailData = await data.json();
     setDetails(detailData);
@@ -57,6 +56,33 @@ function Recipe() {
     navigate(`/View_comments?recipe_title=${recipeTitle}`, { replace: true });
   }
 
+  async function fav() {
+    const recipeId = extract_id(link);
+    const recipeTitle = details.title; 
+
+    try {
+      const response = await fetch("http://88.200.63.148:3084/Save_favorite", {
+        method: "POST",
+        headers: {"Content-Type": "application/json",},
+        body: JSON.stringify({
+          recipeId,
+          userEmail,
+          recipeTitle,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Recipe saved to favorites successfully!");
+        alert("Recipe was saved to favorites")
+      } else {
+        console.error("Failed to save recipe to favorites.");
+        alert("There was an error, recipe was not saved to favorites")
+      }
+    } catch (error) {
+      console.error("Error occurred while saving recipe to favorites:", error);
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -89,8 +115,9 @@ function Recipe() {
             </div>
           </Wrapper>
 
-          <button type="submit" className="log_in_btn" onClick={comment}>Give star rating and comment</button>
+          <button type="submit" className="save_changes_btn" onClick={comment}>Give star rating and comment</button>
           <button type="submit" className="submit_btn" onClick={comments}>View star ratings and comments</button>
+          <button type="submit" className="save_changes_btn" onClick={fav}>Save recipe as favourite</button>
         </div>
       </div>
     </div>
@@ -110,6 +137,6 @@ const Wrapper = styled.div `
   }
   h2 {
     margin-bottom: 2rem;
-  }
-`
+  }`
+
 export default Recipe;

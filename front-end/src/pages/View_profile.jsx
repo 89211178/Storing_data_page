@@ -19,7 +19,7 @@ function View_profile() {
     // Retrieve username from MySQL table Uporabnik based on user's email
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3082/Get_profile/${encodeURIComponent(userEmail)}`);
+        const response = await axios.get(`http://88.200.63.148:3084/Get_profile/${encodeURIComponent(userEmail)}`);
         const { firstname, lastname, about } = response.data;
         setProfile({ firstname, lastname, about });
       } catch (error) {
@@ -69,7 +69,7 @@ function View_profile() {
                 </label>
                 <textarea placeholder="No information given yet" name="about" value={profile.about} readOnly />
               </ul>
-              <button type="button" className="log_in_btn" onClick={changeProfile}>
+              <button type="button" className="save_changes_btn" onClick={changeProfile}>
                 Change profile
               </button>
             </div>

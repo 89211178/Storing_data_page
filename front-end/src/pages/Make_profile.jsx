@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Make_profile() {
   const navigate = useNavigate();
-  const userEmail = localStorage.getItem("userEmail"); // Retrieve user's email from local storage
+  const userEmail = localStorage.getItem("userEmail"); 
 
   const [values, setValues] = useState({
     mail: userEmail,
@@ -24,7 +24,7 @@ function Make_profile() {
     try {
       const { mail, firstname, lastname, about } = values;
 
-      const response = await axios.post(`http://88.200.63.148:3082/Make_profile`, {
+      const response = await axios.post(`http://88.200.63.148:3084/Make_profile`, {
         mail,
         firstname,
         lastname,
@@ -46,7 +46,7 @@ function Make_profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3082/Get_profile/${encodeURIComponent(userEmail)}`);
+        const response = await axios.get(`http://88.200.63.148:3084/Get_profile/${encodeURIComponent(userEmail)}`);
 
         if (response.status === 200) {
           const { firstname, lastname, about } = response.data;
