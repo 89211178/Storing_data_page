@@ -70,8 +70,8 @@ function Fav_recipe() {
       <Navbar />
       <div className="body_2">
         <div className="relative">
-            {details.title ? (
-              <>
+          {details.title ? (
+            <>
               <Wrapper>
                 <div>
                   <h2>{details.title}</h2>
@@ -97,11 +97,11 @@ function Fav_recipe() {
                     )}
                   </ul>
                 </div>
-                </Wrapper>
-              </>
-            ) : (
-              <div>We are sorry for inconvenience, but the recipe was not found.</div>
-            )}
+              </Wrapper>
+            </>
+          ) : (
+            <div>We are sorry for inconvenience, but the recipe was not found.</div>
+          )}
           <button type="submit" className="save_changes_btn" onClick={back}>
             Go back to favorites
           </button>
@@ -116,7 +116,6 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   column-gap: 1px;
   li {
-    font-size: 1.2rem;
     line-height: 2.5rem;
   }
   ul {

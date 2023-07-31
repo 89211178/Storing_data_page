@@ -10,18 +10,18 @@ function Search() {
     const navigate = useNavigate();
 
     const submitHandler = (e) => {
-            e.preventDefault();
-            navigate('/searched/' + input);
-        };
+        e.preventDefault();
+        navigate('/searched/' + input);
+    };
 
     return (
         <FormStyle onSubmit={submitHandler} >
             <div>
                 <FaSearch></FaSearch>
                 <input
-                onChange={(e) => setInput(e.target.value)}
-                type="text"
-                value={input} />
+                    onChange={(e) => setInput(e.target.value)}
+                    type="text"
+                    value={input} />
             </div>
         </FormStyle>
     );

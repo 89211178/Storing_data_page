@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function View_profile() {
-  const [userEmail, setUserEmail] = useState(""); // Move the userEmail state inside the component
+  const [userEmail, setUserEmail] = useState("");
   const [username, setUsername] = useState("");
   const [profile, setProfile] = useState({
     firstname: "",
@@ -13,10 +13,9 @@ function View_profile() {
   });
 
   useEffect(() => {
-    const userEmail = localStorage.getItem("userEmail"); // Retrieve user's email from local storage
-    setUserEmail(userEmail); // Set the userEmail state
+    const userEmail = localStorage.getItem("userEmail"); 
+    setUserEmail(userEmail); 
 
-    // Retrieve username from MySQL table Uporabnik based on user's email
     const fetchProfile = async () => {
       try {
         const response = await axios.get(`http://88.200.63.148:3084/Get_profile/${encodeURIComponent(userEmail)}`);
@@ -28,7 +27,7 @@ function View_profile() {
     };
 
     fetchProfile();
-  }, [userEmail]); // Add userEmail as a dependency to useEffect
+  }, [userEmail]); 
 
   const navigate = useNavigate();
 
@@ -54,7 +53,7 @@ function View_profile() {
             </div>
             <div className="About">
               <ul>
-              <label htmlFor="firstname">
+                <label htmlFor="firstname">
                   <b>Firstname:</b>
                 </label>
                 <input type="text" placeholder="No information given yet" name="firstname" value={profile.firstname} readOnly />

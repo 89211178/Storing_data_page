@@ -32,7 +32,7 @@ function Find_user() {
   };
 
   const handleProfileClick = (email) => {
-    const emailWithAt = email.replace(/@/g, "%40"); 
+    const emailWithAt = email.replace(/@/g, "%40");
     navigate(`/User_profile?user_mail=${encodeURIComponent(emailWithAt)}`);
   };
 
@@ -42,23 +42,23 @@ function Find_user() {
       <div className="body">
         <div className="relative">
           <h2>SEARCH UP USER:</h2>
-          <h3>Write mail of the user you are searching for:</h3>     
-            <Search_mail onSearch={handleSearch} />
-              <br></br>
-              <img className="loading" src="https://media.tenor.com/d3HwOIP8L5cAAAAC/da-bears.gif" alt=""></img>
-              <ul>
-                {filteredProfiles.map((profile) => (
-                  <li
-                    key={profile.email}
-                    onClick={() => handleProfileClick(profile.email)}
-                  >
-                    {profile.email}
-                  </li>
-                ))}
-              </ul>
-          </div>
+          <h3>Write mail of the user you are searching for:</h3>
+          <Search_mail onSearch={handleSearch} />
+          <br></br>
+          <img className="loading" src="https://media.tenor.com/d3HwOIP8L5cAAAAC/da-bears.gif" alt=""></img>
+          <ul>
+            {filteredProfiles.map((profile) => (
+              <li
+                key={profile.email}
+                onClick={() => handleProfileClick(profile.email)}
+              >
+                {profile.email}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
+    </div>
   );
 }
 

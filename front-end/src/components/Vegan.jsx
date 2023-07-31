@@ -6,54 +6,84 @@ import { Link } from "react-router-dom";
 
 function Vegan() {
   const [vegan, setVegan] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getVegan();
   }, []);
 
-  // ${process.env.REACT_APP_API_KEY}
-  // make you API hidden
-
   const getVegan = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4&tags=vegan`
-    );
-    const data = await api.json();
-    setVegan(data.recipes);
-    console.log(data.recipes);
+    try {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4&tags=vegan`
+      );
+      if (api.status === 429) {
+        setError(true);
+      } else {
+        const data = await api.json();
+        setVegan(data.recipes || []);
+      }
+    } catch (error) {
+      setError(true);
+    }
   };
 
-  if (!vegan.length) {
-    return <p>Loading...</p>;
+  if (error) {
+    return (
+      <div className="wrapper">
+        <h3>VEGAN RECIPES</h3>
+        <Splide
+          options={{
+            perPage: 3,
+            pagination: false,
+            arrows: false,
+            drag: "free",
+            gap: "1rem"
+          }}>
+          {vegan && vegan.map((recipe) => {
+            return (
+              <SplideSlide key={recipe.id}>
+                <div className="card">
+                  <Link to={"/recipe/" + recipe.id}>
+                    <p className="recipe_title">{recipe.title}</p>
+                    <img className="style" src={recipe.image} alt={recipe.title} />
+                  </Link>
+                </div>
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      </div>
+    );
   }
 
   return (
     <div>
-          <div className="wrapper">
-            <h3>VEGAN RECIPES</h3>
-            <Splide
-              options={ {
-                perPage: 3,
-                pagination: false,
-                arrows: false,
-                drag: "free",
-                gap: "1rem"
-              } }>
-            {vegan.map((recipe) => {
-              return (
-                <SplideSlide key={recipe.id}>
-                  <div className="card">
+      <div className="wrapper">
+        <h3>VEGAN RECIPES</h3>
+        <Splide
+          options={{
+            perPage: 3,
+            pagination: false,
+            arrows: false,
+            drag: "free",
+            gap: "1rem"
+          }}>
+          {vegan && vegan.map((recipe) => {
+            return (
+              <SplideSlide key={recipe.id}>
+                <div className="card">
                   <Link to={"/recipe/" + recipe.id}>
-                  <p className="recipe_title">{recipe.title}</p>
-                  <img className="style" src={recipe.image} alt={recipe.title} />
+                    <p className="recipe_title">{recipe.title}</p>
+                    <img className="style" src={recipe.image} alt={recipe.title} />
                   </Link>
-                  </div>
-                </SplideSlide>
-              );
-            })}
-            </Splide>
-          </div>    
-        </div>
+                </div>
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      </div>
+    </div>
   );
 }
 

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import Stars_displayed from "../components/Stars_displayed";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 function View_comments() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ function View_comments() {
   const recipeTitle = recipeTitleParam ? decodeURIComponent(recipeTitleParam) : "";
   const [hover, setHover] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => {  
     const fetchComments = async () => {
       try {
         const response = await axios.get(`http://88.200.63.148:3084/api/comments?recipe_title=${encodeURIComponent(recipeTitle)}`);
@@ -30,8 +30,8 @@ function View_comments() {
   }, [recipeTitle]);
 
   async function back() {
-    navigate('/Home', { replace: true });
-}
+    navigate("/Commented", { replace: true });
+  }
 
   return (
     <div>
@@ -39,7 +39,7 @@ function View_comments() {
       <div className="body">
         <div className="relative">
           <div className="about">
-            <h2>Comments for recipe: 
+            <h2>Comments for recipe:
               <br /> {recipeTitle}</h2>
             {comments.length === 0 ? (
               <h4>No comments for this recipe were yet made.</h4>
@@ -55,7 +55,7 @@ function View_comments() {
                 ))}
               </>
             )}
-            <button type="submit" onClick={back} className="save_changes_btn">Go back to Searching recipes</button>
+            <button type="submit" onClick={back} className="save_changes_btn">Go look at your own comments</button>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import "../styles.css";
 import Navbar from "../components/Navbar";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 function Recipe() {
   let params = useParams();
@@ -35,12 +35,12 @@ function Recipe() {
     setLastPart(extractedPart);
   }, [link]);
 
-  const navigate = useNavigate(); 
-  const userEmail = localStorage.getItem("userEmail"); // Retrieve user's email from local storage
+  const navigate = useNavigate();
+  const userEmail = localStorage.getItem("userEmail"); 
 
   function comment() {
     const recipeId = extract_id(link);
-    const recipeTitle = details.title; // Get the recipe title from the details state
+    const recipeTitle = details.title; 
     navigate(`/Comments?recipe_id=${recipeId}&user_mail=${userEmail}&recipe_title=${recipeTitle}`, { replace: true });
   }
 
@@ -58,12 +58,12 @@ function Recipe() {
 
   async function fav() {
     const recipeId = extract_id(link);
-    const recipeTitle = details.title; 
+    const recipeTitle = details.title;
 
     try {
       const response = await fetch("http://88.200.63.148:3084/Save_favorite", {
         method: "POST",
-        headers: {"Content-Type": "application/json",},
+        headers: { "Content-Type": "application/json", },
         body: JSON.stringify({
           recipeId,
           userEmail,
@@ -95,11 +95,11 @@ function Recipe() {
             </div>
             <div>
               <h3>About the:</h3>
-              <p dangerouslySetInnerHTML={{__html: details.summary}}></p>
+              <p dangerouslySetInnerHTML={{ __html: details.summary }}></p>
             </div>
             <div>
               <h3>Instructions:</h3>
-              <p dangerouslySetInnerHTML={{__html: details.instructions}}></p>
+              <p dangerouslySetInnerHTML={{ __html: details.instructions }}></p>
             </div>
             <div>
               <h3>Ingredients:</h3>
@@ -124,12 +124,11 @@ function Recipe() {
   );
 }
 
-const Wrapper = styled.div `
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr ;
   column-gap: 1px;
   li {
-    font-size: 1.2rem;
     line-height: 2.5rem;
   }
   ul {

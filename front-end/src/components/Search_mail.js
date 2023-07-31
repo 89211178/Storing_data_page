@@ -17,7 +17,7 @@ function Search_mail() {
   return (
     <FormStyle onSubmit={submitHandler}>
       <div>
-      <FaSearch></FaSearch>
+        <FaSearch></FaSearch>
         <input
           type="text"
           placeholder="Search by email..."

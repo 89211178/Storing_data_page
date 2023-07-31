@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Make_profile() {
   const navigate = useNavigate();
-  const userEmail = localStorage.getItem("userEmail"); 
+  const userEmail = localStorage.getItem("userEmail");
 
   const [values, setValues] = useState({
     mail: userEmail,
@@ -74,8 +74,8 @@ function Make_profile() {
                 <ul>
                   <label htmlFor="firstname">
                     <b>Firstname:</b>
-                  </label>   
-                  <br></br>                    
+                  </label>
+                  <br></br>
                   <input
                     type="text"
                     placeholder="Enter Firstname"
@@ -108,7 +108,7 @@ function Make_profile() {
                   <br></br>
                   <textarea
                     type="text"
-                    placeholder="Enter information about you"
+                    placeholder="   Enter information about you"
                     name="about"
                     value={values.about}
                     onChange={handleInput}

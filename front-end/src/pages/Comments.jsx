@@ -10,7 +10,7 @@ function Comments() {
   const searchParams = new URLSearchParams(location.search);
   const recipe_id = searchParams.get("recipe_id");
   const user_mail = searchParams.get("user_mail");
-  const recipe_title = searchParams.get("recipe_title"); 
+  const recipe_title = searchParams.get("recipe_title");
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [errors, setErrors] = useState({});
@@ -34,7 +34,7 @@ function Comments() {
       recipe_id,
       rating,
       comment,
-      recipe_title, 
+      recipe_title,
     };
 
     try {
@@ -50,6 +50,10 @@ function Comments() {
     }
   };
 
+  async function back() {
+    navigate("/recipe/" + recipe_id, { replace: true });
+  }
+
   return (
     <div>
       <Navbar />
@@ -64,7 +68,7 @@ function Comments() {
 
             <textarea
               type="feedback"
-              placeholder="What's your feedback?"
+              placeholder="   What's your feedback?"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
@@ -75,11 +79,14 @@ function Comments() {
             <br></br>
             <button
               type="submit"
-              className="log_in_btn"
+              className="save_changes_btn"
               onClick={handleSubmit}
               disabled={rating === 0 || comment === ""}
-            >
-              Submit comment and rating stars
+            >Submit comment and rating stars
+            </button>
+
+            <button type="submit" className="save_changes_btn" onClick={back}>
+              Go back to recipe
             </button>
 
             <p>Thank you for giving us much appreciated feedback</p>

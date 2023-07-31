@@ -13,17 +13,15 @@ dotenv.config();
 
 const port = process.env.PORT || 3084;
 
-// Import our custom modules/controllers
 const web = require("./routes/web");
 const db = require("./db/conn");
 
-app.use(express.json()); // Add this line to parse JSON requests
+app.use(express.json()); 
 
 app.get("/", (req, res) => {
   res.send("Server is finding port ...");
 });
 
-// Routes
 app.use("/web", web);
 
 app.listen(port, () => {
@@ -35,7 +33,6 @@ app.listen(port, () => {
 app.post("/Singup", (req, res) => {
   const { mail, name, password } = req.body;
 
-  // Generate a unique ID for the user
   const userId = uuid.v4();
 
   const sql = "INSERT INTO Uporabnik (`id`, `mail`, `name`, `password`) VALUES (?, ?, ?, ?)";
@@ -100,7 +97,6 @@ app.post("/Make_profile", (req, res) => {
     }
 
     if (selectResult.length > 0) {
-      // Profile exists, perform update
       db.query(sqlUpdate, [firstname, lastname, about, mail], (updateErr, updateResult) => {
         if (updateErr) {
           console.error(updateErr);
@@ -110,8 +106,7 @@ app.post("/Make_profile", (req, res) => {
         return res.json("Success");
       });
     } else {
-      // Profile doesn't exist, perform insert
-      const profil_id = uuid.v4(); // Generate a unique ID for the profile
+      const profil_id = uuid.v4(); 
       db.query(sqlInsert, [profil_id, mail, firstname, lastname, about], (insertErr, insertResult) => {
         if (insertErr) {
           console.error(insertErr);
@@ -135,7 +130,6 @@ app.get("/Get_profile/:email", (req, res) => {
     }
 
     if (result.length === 0) {
-      // If the profile doesn't exist, return a 404 status
       return res.status(404).json({ message: "Profile not found" });
     }
 
@@ -171,7 +165,6 @@ app.get("/api/comments", (req, res) => {
     return res.status(400).json({ error: "Missing recipe_title query parameter" });
   }
 
-  // Perform the MySQL query to get the comments for the specified recipe_title
   const query = "SELECT rating, comment, user_mail FROM Komentar WHERE recipe_title = ?";
   db.query(query, [recipeTitle], (err, results) => {
     if (err) {
@@ -180,24 +173,6 @@ app.get("/api/comments", (req, res) => {
     } else {
       res.json(results);
     }
-  });
-});
-
-// --------------------------------------------------------------------------------------
-
-app.post("/Add_Recipes", (req, res) => {
-  const { user_mail, name, about, instructions, ingredients, recipe_id } = req.body;
-
-  const query = "INSERT INTO Recept (`user_mail`, `recipe_id`, `name`, `about`, `instructions`, `ingredients`) VALUES (?, ?, ?, ?, ?, ?)";
-  const values = [user_mail, recipe_id, name, about, instructions, ingredients];
-
-  pool.query(query, values, (error, results) => {
-    if (error) {
-      console.error("Error saving recipe to database:", error);
-      return res.status(500).json({ message: "Error saving recipe" });
-    }
-
-    return res.status(200).json({ message: "Recipe saved successfully" });
   });
 });
 
@@ -243,7 +218,6 @@ app.get("/Commented", (req, res) => {
     return res.status(400).json({ error: "Missing user_mail query parameter" });
   }
 
-  // Perform the MySQL query to get the unique recipe titles for the specified user_mail
   const query = "SELECT DISTINCT recipe_title FROM Komentar WHERE user_mail = ?";
   db.query(query, [userEmail], (err, results) => {
     if (err) {

@@ -22,19 +22,19 @@ function Login() {
         event.preventDefault();
         setErrors(Login_Validation(values));
         if (errors.mail === "" && errors.password === "") {
-        axios.post("http://88.200.63.148:3084/Login", values)
-        .then (res => {
-            if (res.data === "Success") {
-                localStorage.setItem("userEmail", values.mail); 
-                navigate('/Home');
-                alert("Welcome back to CookSmart")
-            }
-            else {
-                alert("Mail and password are incorrect");
-            }
-        })
-        .catch (err => console.log(err));
-    }
+            axios.post("http://88.200.63.148:3084/Login", values)
+                .then(res => {
+                    if (res.data === "Success") {
+                        localStorage.setItem("userEmail", values.mail);
+                        navigate('/Home');
+                        alert("Welcome back to CookSmart")
+                    }
+                    else {
+                        alert("Mail and password are incorrect");
+                    }
+                })
+                .catch(err => console.log(err));
+        }
     }
 
     async function sing_up() {
@@ -49,55 +49,56 @@ function Login() {
         <div>
             <div className="body">
                 <div className="relative_1">
-            
+
                     <div className="relative_2">
-                    <h1>CookSmart</h1>
+                        <h1>CookSmart</h1>
                     </div>
-                        
+
                     <form onSubmit={handleSubmit}>
-                    <div className="container_2">
+                        <div className="container_2">
 
-                        <label htmlFor="mail">
-                          <b>Mail:</b>
-                        </label>
-                        <input
-                          type="text"
-                          onChange={handleInput}
-                          placeholder="Enter Mail"
-                          name="mail"
-                          required
-                        />
-                        {errors.mail && <span className="text-danger"> {errors.mail} </span>}
+                            <label htmlFor="mail">
+                                <b>Mail:</b>
+                            </label>
+                            <input
+                                type="text"
+                                onChange={handleInput}
+                                placeholder="Enter Mail"
+                                name="mail"
+                                required
+                            />
+                            {errors.mail && <span className="text-danger"> {errors.mail} </span>}
 
-                        <br></br>
+                            <br></br>
 
-                        <label htmlFor="password">
-                            <b>Password:</b>
-                        </label>
-                        <input
-                            type="password"
-                            onChange={handleInput}
-                            placeholder="Enter Password"
-                            name="password"
-                            required
-                        />
-                        {errors.password && <span className="text-danger"> {errors.password} </span>}
+                            <label htmlFor="password">
+                                <b>Password:</b>
+                            </label>
+                            <input
+                                type="password"
+                                onChange={handleInput}
+                                placeholder="Enter Password"
+                                name="password"
+                                required
+                            />
+                            {errors.password && <span className="text-danger"> {errors.password} </span>}
 
-                        <br></br>
+                            <br></br>
+                            <br></br>
 
-                        <button type="submit" className="sing_up_btn">Login</button>
-                    </div>
+                            <button type="submit" className="btn">Login</button>
+                        </div>
 
-                    <div className="container_3">
-                        <button onClick={sing_up} className="sing_up_btn">Sing_up</button>
-                        <button onClick={remember} className="log_in_btn">Forgot_password?</button>
-                    </div> 
+                        <div className="container_3">
+                            <button onClick={sing_up} className="btn">Sing_up</button>
+                            <button onClick={remember} className="btn">Forgot_password?</button>
+                        </div>
                     </form>
 
                 </div>
             </div>
         </div>
     );
-  }
-  
-  export default Login;
+}
+
+export default Login;

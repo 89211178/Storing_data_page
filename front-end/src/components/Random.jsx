@@ -6,54 +6,84 @@ import { Link } from "react-router-dom";
 
 function Random() {
   const [random, setRandom] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getRandom();
   }, []);
 
-  // ${process.env.REACT_APP_API_KEY}
-  // make you API hidden
-
   const getRandom = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4`
-    );
-    const data = await api.json();
-    setRandom(data.recipes);
-    console.log(data.recipes);
+    try {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4`
+      );
+      if (api.status === 429) {
+        setError(true);
+      } else {
+        const data = await api.json();
+        setRandom(data.recipes || []);
+      }
+    } catch (error) {
+      setError(true);
+    }
   };
 
-  if (!random.length) {
-    return <p>Loading...</p>;
+  if (error) {
+    return (
+      <div className="wrapper">
+        <h3>RANDOM RECIPES</h3>
+        <Splide
+          options={{
+            perPage: 3,
+            pagination: false,
+            arrows: false,
+            drag: "free",
+            gap: "1rem"
+          }}>
+          {random && random.map((recipe) => {
+            return (
+              <SplideSlide key={recipe.id}>
+                <div className="card">
+                  <Link to={"/recipe/" + recipe.id}>
+                    <p className="recipe_title">{recipe.title}</p>
+                    <img className="style" src={recipe.image} alt={recipe.title} />
+                  </Link>
+                </div>
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      </div>
+    );
   }
 
   return (
     <div>
-          <div className="wrapper">
-            <h3>RANDOM RECPIES</h3>
-            <Splide
-              options={ {
-                perPage: 3,
-                pagination: false,
-                arrows: false,
-                drag: "free",
-                gap: "1rem"
-              } }>
-            {random.map((recipe) => {
-              return (
-                <SplideSlide key={recipe.id}>
-                  <div className="card">
+      <div className="wrapper">
+        <h3>RANDOM RECIPES</h3>
+        <Splide
+          options={{
+            perPage: 3,
+            pagination: false,
+            arrows: false,
+            drag: "free",
+            gap: "1rem"
+          }}>
+          {random && random.map((recipe) => {
+            return (
+              <SplideSlide key={recipe.id}>
+                <div className="card">
                   <Link to={"/recipe/" + recipe.id}>
-                  <p className="recipe_title">{recipe.title}</p>
-                  <img className="style" src={recipe.image} alt={recipe.title} />
+                    <p className="recipe_title">{recipe.title}</p>
+                    <img className="style" src={recipe.image} alt={recipe.title} />
                   </Link>
-                  </div>
-                </SplideSlide>
-              );
-            })}
-            </Splide>
-          </div>    
-        </div>
+                </div>
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      </div>
+    </div>
   );
 }
 

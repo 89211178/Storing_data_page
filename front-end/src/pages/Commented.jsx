@@ -24,17 +24,17 @@ function Commented() {
       <div className="body">
         <div className="relative">
           <h2>Your Commented Recipes:</h2>
-            {commentedRecipeTitles.length > 0 ? (
-              commentedRecipeTitles.map((recipeTitle) => (
-                <ul key={recipeTitle}>
-                  <Link to={`/Com_recipe/${encodeURIComponent(recipeTitle)}`}>
-                    {recipeTitle}
-                  </Link>
-                </ul>
-              ))
-            ) : (
-              <ul>No commented recipes yet found.</ul>
-            )}
+          {commentedRecipeTitles.length > 0 ? (
+            commentedRecipeTitles.map((recipeTitle) => (
+              <ul key={recipeTitle}>
+                <Link to={`/Com_recipe/${encodeURIComponent(recipeTitle)}`}>
+                  {recipeTitle}
+                </Link>
+              </ul>
+            ))
+          ) : (
+            <ul>No commented recipes yet found.</ul>
+          )}
         </div>
       </div>
     </div>

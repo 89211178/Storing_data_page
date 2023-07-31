@@ -14,7 +14,7 @@ function Signup() {
   });
 
   const [errors, setErrors] = useState({});
-  const [isEmailAvailable, setIsEmailAvailable] = useState(true); // Track email availability
+  const [isEmailAvailable, setIsEmailAvailable] = useState(true); 
 
   const handleInput = (event) => {
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -45,13 +45,13 @@ function Signup() {
           ...prev,
           mail: "That mail is already in use",
         }));
-        setIsEmailAvailable(false); // Set flag to false if email is already in use
+        setIsEmailAvailable(false); 
       } else {
         setErrors((prev) => ({
           ...prev,
           mail: "",
         }));
-        setIsEmailAvailable(true); // Set flag to true if email is available
+        setIsEmailAvailable(true); 
       }
     } catch (error) {
       console.log(error);
@@ -60,7 +60,7 @@ function Signup() {
 
   async function back_to() {
     navigate('/Login', { replace: true });
-}
+  }
 
   return (
     <div>
@@ -84,7 +84,6 @@ function Signup() {
                 required
               />
               {errors.mail && <span className="text-danger">{errors.mail}</span>}
-
               <br></br>
 
               <label htmlFor="name">
@@ -98,7 +97,6 @@ function Signup() {
                 required
               />
               {errors.name && <span className="text-danger">{errors.name}</span>}
-
               <br></br>
 
               <label htmlFor="password">
@@ -111,19 +109,12 @@ function Signup() {
                 name="password"
                 required
               />
-              {errors.password && (
-                <span className="text-danger">{errors.password}</span>
-              )}
-
+              {errors.password && (<span className="text-danger">{errors.password}</span>)}
               <br></br>
 
-              <button type="submit" className="sing_up_btn" disabled={!isEmailAvailable}>
-                Sign Up
-              </button>
+              <button type="submit" className="btn" disabled={!isEmailAvailable}>Sign Up</button>
             </div>
-            <button type="submit" className="sing_up_btn" onClick={back_to}>
-                Back to Login
-              </button>
+            <button type="submit" className="btn" onClick={back_to}>Back to Login</button>
           </form>
         </div>
       </div>

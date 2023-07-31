@@ -24,15 +24,15 @@ function Favourite() {
       <div className="body">
         <div className="relative">
           <h2>Favourite Recipes:</h2>
-            {favouriteRecipes.length > 0 ? (
-              favouriteRecipes.map((recipe) => (
-                <ul key={recipe.fav_id}>
-                  <Link to={`/Fav_recipe/${encodeURIComponent(recipe.recipe_title)}`}>{recipe.recipe_title}</Link>
-                </ul>
-              ))
-            ) : (
-              <ul>No favourite recipes yet saved found.</ul>
-            )}
+          {favouriteRecipes.length > 0 ? (
+            favouriteRecipes.map((recipe) => (
+              <ul key={recipe.fav_id}>
+                <Link to={`/Fav_recipe/${encodeURIComponent(recipe.recipe_title)}`}>{recipe.recipe_title}</Link>
+              </ul>
+            ))
+          ) : (
+            <ul>No favourite recipes yet saved found.</ul>
+          )}
         </div>
       </div>
     </div>
