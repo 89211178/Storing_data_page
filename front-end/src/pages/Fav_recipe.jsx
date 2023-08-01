@@ -68,7 +68,7 @@ function Fav_recipe() {
   return (
     <div>
       <Navbar />
-      <div className="body_2">
+      <div className="body">
         <div className="relative">
           {details.title ? (
             <>

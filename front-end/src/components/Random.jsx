@@ -15,7 +15,7 @@ function Random() {
   const getRandom = async () => {
     try {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4`
+        `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=5`
       );
       if (api.status === 429) {
         setError(true);

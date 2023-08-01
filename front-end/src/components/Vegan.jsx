@@ -15,7 +15,7 @@ function Vegan() {
   const getVegan = async () => {
     try {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=4&tags=vegan`
+        `https://api.spoonacular.com/recipes/random?apiKey=fef7bde6dbcb48898e88261caf38dc5c&number=5&tags=vegan`
       );
       if (api.status === 429) {
         setError(true);
