@@ -61,7 +61,7 @@ function Recipe() {
     const recipeTitle = details.title;
 
     try {
-      const response = await fetch("http://88.200.63.148:3084/Save_favorite", {
+      const response = await fetch("/Save_favorite", {
         method: "POST",
         headers: { "Content-Type": "application/json", },
         body: JSON.stringify({

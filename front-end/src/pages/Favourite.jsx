@@ -8,7 +8,7 @@ function Favourite() {
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
 
-    fetch(`http://88.200.63.148:3084/Get_favourite?user_mail=${userEmail}`)
+    fetch(`/Get_favourite?user_mail=${userEmail}`)
       .then((response) => response.json())
       .then((data) => {
         setFavouriteRecipes(data);

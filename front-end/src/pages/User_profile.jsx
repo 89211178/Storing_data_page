@@ -20,7 +20,7 @@ function User_profile() {
   const fetchProfile = async (email) => {
     try {
       const response = await axios.get(
-        `http://88.200.63.148:3084/Get_profile/${encodeURIComponent(email)}`
+        `/Get_profile/${encodeURIComponent(email)}`
       );
       setProfile(response.data);
     } catch (error) {

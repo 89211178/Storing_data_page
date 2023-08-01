@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 const uuid = require("uuid");
+const path = require("path");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -16,10 +17,10 @@ const port = process.env.PORT || 3084;
 const web = require("./routes/web");
 const db = require("./db/conn");
 
-app.use(express.json()); 
+app.use(express.static(path.join(__dirname, "build")))
 
 app.get("/", (req, res) => {
-  res.send("Server is finding port ...");
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.use("/web", web);

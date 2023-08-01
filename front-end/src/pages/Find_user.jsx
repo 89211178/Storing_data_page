@@ -16,7 +16,7 @@ function Find_user() {
 
   const fetchAllProfiles = async () => {
     try {
-      const response = await axios.get("http://88.200.63.148:3084/Get_profile");
+      const response = await axios.get("/Get_profile");
       setAllProfiles(response.data);
     } catch (error) {
       console.error(error);

@@ -15,7 +15,7 @@ function Com_recipe() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3084/api/comments?recipe_title=${encodeURIComponent(recipe_title)}`);
+        const response = await axios.get(`/api/comments?recipe_title=${encodeURIComponent(recipe_title)}`);
         setComments(response.data);
         setLoading(false);
       } catch (error) {

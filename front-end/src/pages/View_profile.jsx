@@ -18,7 +18,7 @@ function View_profile() {
 
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3084/Get_profile/${encodeURIComponent(userEmail)}`);
+        const response = await axios.get(`/Get_profile/${encodeURIComponent(userEmail)}`);
         const { firstname, lastname, about } = response.data;
         setProfile({ firstname, lastname, about });
       } catch (error) {

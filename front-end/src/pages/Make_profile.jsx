@@ -24,7 +24,7 @@ function Make_profile() {
     try {
       const { mail, firstname, lastname, about } = values;
 
-      const response = await axios.post(`http://88.200.63.148:3084/Make_profile`, {
+      const response = await axios.post(`/Make_profile`, {
         mail,
         firstname,
         lastname,
@@ -46,7 +46,7 @@ function Make_profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://88.200.63.148:3084/Get_profile/${encodeURIComponent(userEmail)}`);
+        const response = await axios.get(`/Get_profile/${encodeURIComponent(userEmail)}`);
 
         if (response.status === 200) {
           const { firstname, lastname, about } = response.data;

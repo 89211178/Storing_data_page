@@ -38,7 +38,7 @@ function Comments() {
     };
 
     try {
-      const response = await axios.post("http://88.200.63.148:3084/Comments", values);
+      const response = await axios.post("/Comments", values);
       if (response.status === 200) {
         navigate("/Home");
       } else {

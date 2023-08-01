@@ -8,7 +8,7 @@ function Commented() {
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail");
 
-    fetch(`http://88.200.63.148:3084/Commented?user_mail=${userEmail}`)
+    fetch(`/Commented?user_mail=${userEmail}`)
       .then((response) => response.json())
       .then((data) => {
         setCommentedRecipeTitles(data.map((recipe) => recipe.recipe_title));

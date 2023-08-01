@@ -1,30 +1,29 @@
-export default function Navbar() {
-  const path = window.location.pathname;
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
+export default function Navbar() {
   return (
     <div className="topnav">
       <div className="nav-links">
-        <CustomLink href="/Home">Home page</CustomLink>
-        <CustomLink href="/Find_recipe">Find recipe</CustomLink>
-        <CustomLink href="/Find_user">Find user</CustomLink>
-        <CustomLink href="/View_profile">Your profile</CustomLink>
-        <CustomLink href="/Favourite">Favourite</CustomLink>
-        <CustomLink href="/Commented">Your comments</CustomLink>
-        <CustomLink href="/Sources">Sources</CustomLink>
-        <CustomLink href="/Login">Log out</CustomLink>
+        <CustomLink to="/Home">Home page</CustomLink>
+        <CustomLink to="/Find_recipe">Find recipe</CustomLink>
+        <CustomLink to="/Find_user">Find user</CustomLink>
+        <CustomLink to="/View_profile">Your profile</CustomLink>
+        <CustomLink to="/Favourite">Favourite</CustomLink>
+        <CustomLink to="/Commented">Your comments</CustomLink>
+        <CustomLink to="/Sources">Sources</CustomLink>
+        <CustomLink to="/Login">Log out</CustomLink>
       </div>
     </div>
   );
 }
 
-function CustomLink({ href, children, ...props }) {
-  const path = window.location.pathname;
+function CustomLink({ to, children }) {
+  const location = useLocation();
 
   return (
-    <div className={`nav-link ${path === href ? "active" : ""}`}>
-      <a href={href} {...props}>
-        {children}
-      </a>
+    <div className={`nav-link ${location.pathname === to ? "active" : ""}`}>
+      <Link to={to}>{children}</Link>
     </div>
   );
 }
